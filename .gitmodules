@@ -1,0 +1,3 @@
+[submodule "ai/koremo"]
+	path = ai/koremo
+	url = https://github.com/yhkee0404/koremo.git
