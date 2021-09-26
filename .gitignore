@@ -1,0 +1,6 @@
+ai/data/
+ai/data_s_rmse/
+ai/*.npy
+ai/*.txt
+ai/*.json
+ai/*.xlsx
