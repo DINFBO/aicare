@@ -6,9 +6,11 @@ AI 기반 정신건강 플랫폼
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%9E%AD%ED%8A%B8-%EC%86%8C%EA%B0%9C)프로젝트 소개
-**AICARE**는 군대에서 나라를 지키고 있는 국군 장병 및 간부님들의 정신건강을 AI를 기반으로 관리하는 플랫폼입니다. 
+**AICARE**는 군대에서 나라를 지키고 있는 국군 장병 및 간부님들의 정신건강을 AI를 기반으로 관리하는 플랫폼입니다.
 음성의 언어적 의미와 비언어적 특성을 활용하여 정신건강을 객관적으로 분석합니다.  
 그리고 코로나로 장기간 휴가 및 외출이 통제되어 있는 폐쇄적인 상황에서 정신적으로 어려움을 겪는 장병들과 간부님들의 상황에 맞는 해결책을 제공합니다.
+
+
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EA%B8%B0%EB%8A%A5-%EC%84%A4%EB%AA%85)기능 설명
@@ -20,6 +22,9 @@ AI 기반 정신건강 플랫폼
 -  로그인/회원가입
 -  마이페이지
 
+
+
+
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B5%AC%EC%84%B1--%ED%95%84%EC%88%98-%EC%A1%B0%EA%B1%B4-%EC%95%88%EB%82%B4-prerequisites)컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
 -   ECMAScript 6 지원 브라우저 사용
@@ -27,6 +32,10 @@ AI 기반 정신건강 플랫폼
 -   브라우저 지원 버젼
     
 [!["browser img"](https://github.com/osamhack2020/WEB_Meditact_Meditact/raw/client/src/images/forReadme/browser.png)](https://github.com/osamhack2020/WEB_Meditact_Meditact/blob/client/src/images/forReadme/browser.png)
+
+
+
+
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-technique-used)기술 스택 (Technique Used)
 
@@ -53,11 +62,16 @@ AI 기반 정신건강 플랫폼
 |Javascript | ![enter image description here](https://media.vlpt.us/images/realryankim/post/fc649a62-b232-41c6-8a0e-64fe3d9c1116/JS.jpg)
 
 
+
+
+
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EC%84%A4%EC%B9%98-%EC%95%88%EB%82%B4-installation-process)설치 안내 (Installation Process)
 
 $ git clone git주소
 $ yarn or npm install
 $ yarn start or npm run start
+
+
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-getting-started)프로젝트 사용법 (Getting Started)
 
@@ -67,12 +81,16 @@ $ yarn start or npm run start
 
 편한 마크다운 에디터를 찾아서 사용 샘플 에디터  [https://stackedit.io/app#](https://stackedit.io/app#)
 
+
+
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
 
 -   성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
 -   기윤호 ([ ](mailto: )), Github Id: yhkee0404
 - 하철환([](mailto:)), Github Id: hwna00
 - 조성우([](mailto:)), Github Id: seouk812
+
+
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EC%A0%80%EC%9E%91%EA%B6%8C-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EA%B6%8C-%EC%A0%95%EB%B3%B4-copyleft--end-user-license)저작권 및 사용권 정보 (Copyleft / End User License)
 
