@@ -85,8 +85,8 @@ $ yarn start or npm run start
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
 
--   성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
--   기윤호 ([ ](mailto: )), Github Id: yhkee0404
+- 성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
+- 기윤호 ([yhkee0404@gmail.com](mailto:yhkee0404@gmail.com)), Github Id: yhkee0404
 - 하철환([](mailto:)), Github Id: hwna00
 - 조성우([](mailto:)), Github Id: seouk812
 
