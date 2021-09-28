@@ -5,6 +5,7 @@
     </div>
     <div class="nav__alarm">
       <span><i class="far fa-bell"></i></span>
+      <div class="alarm-circle"></div>
     </div>
   </nav>
 </template>
@@ -33,6 +34,18 @@ export default {}
 
   &__alarm {
     font-size: 24px;
+    position: relative;
+
+    .alarm-circle {
+      position: absolute;
+      top: 2px;
+      left: 1px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: $yellow;
+
+    }
   }
 }
 </style>
