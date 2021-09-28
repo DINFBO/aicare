@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <? include "./head.php"; ?>
+    <?php include("./head.php");?>
     <style>
 
     </style>
@@ -11,7 +11,7 @@
 <body class="text-blueGray-700 antialiased">
     <div id="root">
         <!-- Menu -->
-        <? include "./menu.php"; ?>
+        <?php include("./menu.php");?>
 
         <!-- Header -->
         <div class="relative bg-yellow-300 md:pt-32 pb-0 pt-6">
