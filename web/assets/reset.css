@@ -123,7 +123,6 @@ table {
   border-spacing: 0;
 }
 
-html,
 body {
-  height: 100vh;
+  height: 100vh !important;
 }
