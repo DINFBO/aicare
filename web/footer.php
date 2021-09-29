@@ -5,20 +5,18 @@
             <div class="w-full md:w-6/12 px-4">
                 <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
                     Copyright © <span id="get-current-year"></span>
-                    <a href="https://php4-ghjhh.run.goorm.io/php4/news.php"
-                        class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
+                    <span class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
                         AIM
-                    </a>
+                    </span>
                     <span>/ mn99134@korea.ac.kr</span>
                 </div>
             </div>
             <div class="w-full md:w-6/12 px-4 mb-8">
                 <ul class="flex flex-wrap list-none md:justify-end justify-center">
                     <li>
-                        <a href="https://php4-ghjhh.run.goorm.io/php4/news.php"
-                            class="text-blueGray-800 hover:text-blueGray-900 text-sm font-semibold block py-1 px-3">
+                        <span class="text-blueGray-800 hover:text-blueGray-900 text-sm font-semibold block py-1 px-3">
                             AICARE Created by 에임(AIM)
-                        </a>
+                        </span>
                     </li>
 
                 </ul>
