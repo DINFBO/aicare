@@ -8,7 +8,7 @@ AI 기반 정신건강 플랫폼
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%9E%AD%ED%8A%B8-%EC%86%8C%EA%B0%9C)프로젝트 소개
 **AICARE**는 군대에서 나라를 지키고 있는 국군 장병 및 간부님들의 정신건강을 AI를 기반으로 관리하는 플랫폼입니다.  
 음성의 언어적 의미와 비언어적 특성을 활용하여 정신건강을 객관적으로 분석합니다.  
-그리고 코로나로 장기간 휴가 및 외출이 통제되어 있는 폐쇄적인 상황에서 정신적으로 어려움을 겪는 장병들과 간부님들의 상황에 맞는 해결책을 제공합니다.
+그리고 코로나로 장기간 휴가 및 외출이 통제되어 있는 폐쇄적인 상황에서 정신적으로 어려움을 겪는 장병들과 간부님들의 상황에 맞는 개인맞춤형 해결책을 제공합니다.
 
 
 
@@ -85,8 +85,8 @@ $ yarn start or npm run start
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
 
--   성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
--   기윤호 ([ ](mailto: )), Github Id: yhkee0404
+- 성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
+- 기윤호 ([yhkee0404@gmail.com](mailto:yhkee0404@gmail.com)), Github Id: yhkee0404
 - 하철환([](mailto:)), Github Id: hwna00
 - 조성우([](mailto:)), Github Id: seouk812
 
