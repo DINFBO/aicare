@@ -43,6 +43,7 @@
   box-sizing: border-box !important;
   padding: 32px 16px;
   height: calc(100vh - 57px - 47px);
+  overflow-x: scroll;
   .title {
     font-size: 18px;
     margin-bottom: 24px !important;
