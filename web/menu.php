@@ -89,7 +89,7 @@ else if(strpos($uri, "diag") !== false) {
                 </li>
 
                 <li class="items-center items-center-m">
-                    <a href="./news.php" class="text-xs uppercase py-3 font-bold block <?=$m4?>">
+                    <a href="./consulting.php" class="text-xs uppercase py-3 font-bold block <?=$m4?>">
                         <i class="fas fa-tv mr-2 text-sm  <?=$mi_4?> opacity-75 bottom_ic"></i>
                         원격상담
                     </a>
