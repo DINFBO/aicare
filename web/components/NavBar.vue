@@ -10,7 +10,7 @@
       <span><i class="far fa-calendar"></i></span>
     </div>
     <div class="nav__icon">
-      <i class="fas fa-cog"></i>
+      <span><i class="fas fa-cog"></i></span>
     </div>
   </nav>
 </template>
