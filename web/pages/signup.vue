@@ -25,14 +25,17 @@
             ></i>
           </span>
         </label>
-        <input id="input-profile" type="file" @change="previewFiles" />
+        <input id="input-profile" type="file" @change="checkUpload" />
         <div class="button">
           <button>회원가입</button>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span>이미 회원이신가요? <em @click="$router.push('/login')">로그인</em></span>
+      <span
+        >이미 회원이신가요?
+        <em @click="$router.push('/login')">로그인</em></span
+      >
     </div>
   </div>
 </template>
@@ -46,8 +49,8 @@ export default {
     }
   },
   methods: {
-    previewFiles(event) {
-      if (event.target.files[0] !== null) {
+    checkUpload(event) {
+      if (event.target.file !== null) {
         this.isSuccess = true
       }
     },
