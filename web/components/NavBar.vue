@@ -24,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   color: $gray;
-  border-top: 1px solid $gray;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px -2px 5px -1px;
 
   &__icon {
     display: flex;
