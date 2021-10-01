@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="footer">
-      <span>아직 회원이 아니신가요? <em>회원가입</em></span>
+      <span>이미 회원이신가요? <em @click="$router.push('/login')">로그인</em></span>
     </div>
   </div>
 </template>
