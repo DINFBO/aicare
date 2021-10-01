@@ -62,7 +62,7 @@ export default {
   box-sizing: border-box !important;
   font-family: 'Gowun Dodum', sans-serif;
   height: 100vh;
-  padding: 50% 16px 47px;
+  padding: 15vh 16px 47px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -70,6 +70,7 @@ export default {
 
   .sign-up {
     width: 100%;
+    max-width: 400px;
 
     .sign-up__title {
       width: 100%;
@@ -84,6 +85,11 @@ export default {
       display: flex;
       flex-direction: column;
 
+      label {
+        font-weight: bold;
+        text-align: center;
+      }
+
       input,
       label {
         box-sizing: border-box !important;
@@ -91,14 +97,9 @@ export default {
         background-color: rgba(245, 223, 77, 0.3);
         color: $gray;
         border: none;
-        margin: 8px 0;
-        padding: 8px;
-      }
-
-      label {
-        font-weight: bold;
-        text-align: center;
-        padding: 12px !important;
+        margin: 8px 0 !important;
+        padding: 16px 8px;
+        font-size: 16px;
       }
 
       #input-profile {
