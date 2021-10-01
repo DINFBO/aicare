@@ -7,7 +7,9 @@
       <span><i class="fas fa-chart-line"></i></span>
     </div>
     <div class="nav__icon">
-      <span><i class="far fa-calendar"></i></span>
+      <span @click="$router.push('/history')"
+        ><i class="far fa-calendar"></i
+      ></span>
     </div>
     <div class="nav__icon">
       <span><i class="fas fa-cog"></i></span>
