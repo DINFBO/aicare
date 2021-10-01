@@ -5,14 +5,24 @@
         <span>회원가입</span>
       </div>
       <div class="sign-up__form">
-        <input type="text" placeholder="아이디" />
-        <input type="password" placeholder="비밀번호" />
-        <input type="password" placeholder="비밀번호 확인" />
+        <input type="text" placeholder="이름" required />
+        <input type="text" placeholder="아이디" required />
+        <input type="password" placeholder="비밀번호" required />
+        <input type="password" placeholder="비밀번호 확인" required />
+        <input
+          type="text"
+          placeholder="전역일을 입력해주세요"
+          onfocus="(this.type='date')"
+          required
+        />
         <label for="input-profile">
           프로필 사진 업로드
           <span>
             <i v-if="isSuccess" class="far fa-check-circle success"></i>
-            <i v-else-if="isSuccess == false" class="far fa-times-circle fail"></i>
+            <i
+              v-else-if="isSuccess == false"
+              class="far fa-times-circle fail"
+            ></i>
           </span>
         </label>
         <input id="input-profile" type="file" @change="previewFiles" />
@@ -76,6 +86,8 @@ export default {
 
       input,
       label {
+        box-sizing: border-box !important;
+        width: 100%;
         background-color: rgba(245, 223, 77, 0.3);
         color: $gray;
         border: none;
