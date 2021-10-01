@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <no-ssr>
-      <v-date-picker
-        v-model="selectedDate"
-        mode="range"
-        :min-date="new Date()"
-        show-caps
-      />
-    </no-ssr>
+    <div class="calendar">
+      <no-ssr>
+        <v-date-picker
+          :attributes="attrs"
+          mode="date"
+          is-expanded
+          @dayclick="goDetail"
+        />
+      </no-ssr>
+    </div>
   </div>
 </template>
 
@@ -15,17 +17,33 @@
 export default {
   data() {
     return {
-      selectedDate: {
-        start: new Date(2018, 10, 9),
-        end: new Date(2018, 10, 10),
-      },
+      attrs: [
+        {
+          key: 'today',
+          highlight: 'yellow',
+          dates: new Date(),
+        },
+        {
+          key: 'writeDay',
+          dot: true,
+          dates: [],
+        },
+      ],
     }
+  },
+  methods: {
+    goDetail(day) {
+      // day -> id: 년,월,일, day:일,
+      console.log(day)
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .container {
-  height: 100%;
+  box-sizing: border-box;
+  height: calc(100vh - 57px - 47px);
+  padding: 16px;
 }
 </style>
