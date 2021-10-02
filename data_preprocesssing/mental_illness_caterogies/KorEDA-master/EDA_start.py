@@ -13,6 +13,6 @@ for filename in a:
         tmp = []
         for j in range(3):
           tmp += ([j+'\n' for j in EDA(i[:-1], rd = params[1], rs = params[2])])
-        result += list(set(tmp))
-      with open('../EDA/'+filename+'_'+params[0]+'.txt', 'w', encoding='utf-8') as f2:
+        result += list(set(tmp+[i]))
+      with open('../EDA/'+filename+'_'+params[0]+'.txt', 'w', encoding='cp949') as f2:
         f2.writelines(result)
