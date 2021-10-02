@@ -5,7 +5,7 @@ AI 기반 정신건강 플랫폼
 ## Quickstart
 
 ```
-git clone --recurse-submodules --remote-submodules https://github.com/osamhack2021/AI_WEB_AICARE_AIM.git -b koremo
+git clone --recurse-submodules --remote-submodules https://github.com/osamhack2021/AI_WEB_AICARE_AIM.git -b ai-koremo
 conda env create -n python3.7 --file environment.yml
 conda activate python3.7
 cd ai
