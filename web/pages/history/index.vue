@@ -9,6 +9,7 @@
     <div class="calendar">
       <no-ssr>
         <v-calendar
+          :theme="calendarTheme"
           :attributes="attrs"
           mode="date"
           is-expanded
@@ -26,7 +27,14 @@ export default {
       attrs: [
         {
           key: 'today',
-          highlight: 'yellow',
+          highlight: {
+            style: {
+              background: '#E6C823',
+            },
+            contentStyle: {
+              color: '#ffffff',
+            },
+          },
           dates: new Date(),
         },
         {
@@ -35,6 +43,11 @@ export default {
           dates: [],
         },
       ],
+      calendarTheme: {
+        wrapper: {
+          color: '#fd4d3e',
+        },
+      },
     }
   },
   methods: {
@@ -52,10 +65,21 @@ export default {
   padding: 16px;
 
   .calendar {
-    height: 60vh;
-
-    .vc-container {
+    &::v-deep .vc-container {
       border: none;
+      border-radius: 5px;
+      background-color: #EDDC6B;
+
+      .vc-header {
+        padding: 20px 18px;
+      }
+      .vc-weekday {
+        color: #000000;
+      }
+      .vc-day {
+        padding: 20px 0;
+        color: $gray-darken;
+      }
     }
   }
 }
