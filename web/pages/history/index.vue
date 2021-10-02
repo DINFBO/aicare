@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div class="feelings">
-      <span class="feelings__sad">우울: 3</span>
+      <!-- <span class="feelings__sad">우울: 3</span>
       <span class="feelings__happy">기쁨: 3</span>
       <span class="feelings__annoyance">짜증: 5</span>
-      <span class="feelings__angry">화남: 2</span>
+      <span class="feelings__angry">화남: 2</span> -->
+      <bar-chart :data="chartData" :options="barChartOptions"></bar-chart>
     </div>
     <div class="calendar">
       <no-ssr>
         <v-calendar
-          :theme="calendarTheme"
           :attributes="attrs"
           mode="date"
           is-expanded
@@ -21,7 +21,12 @@
 </template>
 
 <script>
+import BarChart from '~/components/BarChart'
+
 export default {
+  components: {
+    BarChart
+  },
   data() {
     return {
       attrs: [
@@ -43,9 +48,32 @@ export default {
           dates: [],
         },
       ],
-      calendarTheme: {
-        wrapper: {
-          color: '#fd4d3e',
+      chartData: {
+        labels: ['Jan', 'Feb', 'Mar'],
+        datasets: [
+          {
+            label: 'Income',
+            data: [10, 15, 20],
+          },
+        ],
+      },
+      barChartOptions: {
+        responsive: true,
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'Monthly Income',
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
         },
       },
     }

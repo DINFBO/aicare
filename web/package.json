@@ -14,10 +14,12 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "chart.js": "^2.9.4",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "nuxt-breakpoints": "^1.1.9",
-    "v-calendar": "^2.3.2"
+    "v-calendar": "^2.3.2",
+    "vue-chartjs": "^3.5.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
