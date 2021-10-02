@@ -39,9 +39,7 @@ export default {
   },
   methods: {
     goDetail(day) {
-      // day -> id: 년,월,일, day:일,
-      // eslint-disable-next-line no-console
-      console.log(day)
+      this.$router.push(`history/${day.id}`)
     },
   },
 }
