@@ -64,17 +64,22 @@ export default {
   height: calc(100vh - 57px - 47px);
   padding: 16px;
 
+  .feelings {
+    box-sizing: border-box;
+    padding: 16px;
+    font-weight: bold;
+  }
+
   .calendar {
     &::v-deep .vc-container {
       border: none;
       border-radius: 5px;
-      background-color: #EDDC6B;
 
       .vc-header {
         padding: 20px 18px;
       }
       .vc-weekday {
-        color: #000000;
+        color: $black;
       }
       .vc-day {
         padding: 20px 0;
