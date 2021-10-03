@@ -1,11 +1,7 @@
 <template>
   <div class="container">
     <div class="feelings">
-      <!-- <span class="feelings__sad">우울: 3</span>
-      <span class="feelings__happy">기쁨: 3</span>
-      <span class="feelings__annoyance">짜증: 5</span>
-      <span class="feelings__angry">화남: 2</span> -->
-      <bar-chart :data="chartData" :options="barChartOptions"></bar-chart>
+      <bar-chart :data="chartData" :options="barChartOptions" class="chart"></bar-chart>
     </div>
     <div class="calendar">
       <no-ssr>
@@ -25,7 +21,7 @@ import BarChart from '~/components/BarChart'
 
 export default {
   components: {
-    BarChart
+    BarChart,
   },
   data() {
     return {
@@ -49,29 +45,40 @@ export default {
         },
       ],
       chartData: {
-        labels: ['Jan', 'Feb', 'Mar'],
+        labels: ['우울', '기쁨', '분노'],
         datasets: [
           {
-            label: 'Income',
-            data: [10, 15, 20],
+            backgroundColor: ['red', 'blue', 'green'],
+            data: [4, 6, 3],
           },
         ],
       },
       barChartOptions: {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: false,
         },
         title: {
           display: true,
-          text: 'Monthly Income',
+          text: '감정 빈도',
         },
         scales: {
-          yAxes: [
+          xAxes: [
             {
+              gridLines: { display: false, drawBorder: false },
               ticks: {
                 beginAtZero: true,
+                stepSize: 5,
               },
+              min: 0,
+              max: 31,
+            },
+          ],
+          yAxes: [
+            {
+              gridLines: { drawBorder: false, display: false },
+              barPercentage: 0.3,
             },
           ],
         },
@@ -91,11 +98,20 @@ export default {
   box-sizing: border-box;
   height: calc(100vh - 57px - 47px);
   padding: 16px;
+  overflow-y: scroll;
 
   .feelings {
-    box-sizing: border-box;
-    padding: 16px;
+    box-sizing: border-box !important;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+
+    height: 200px;
+    width: 100%;
+
+    .chart {
+      width: 100%;
+    }
   }
 
   .calendar {
