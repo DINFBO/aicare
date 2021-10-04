@@ -9,7 +9,7 @@ $m4=$m1;
 $m0=$m1;
 $mi_1="text-blueGray-300"; $mi_2=$mi_1; $mi_3=$mi_1; $mi_4=$mi_1; $mi_0=$mi_1;
 
-if(strpos($uri, "doctor") !== false ||strpos($uri, "ds_") !== false ) {  
+if(strpos($uri, "diary") !== false ||strpos($uri, "ds_") !== false ) {  
     $m1= "text-pink-500 hover:text-pink-600";
 	$mi_1="text-pink-500 hover:text-pink-600";
 }
