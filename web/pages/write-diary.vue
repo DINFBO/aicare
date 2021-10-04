@@ -28,14 +28,16 @@ export default {
   },
   methods: {
     startRecording() {
-      this.isRecording = true
       const contraint = { audio: true, video: false }
       navigator.mediaDevices
         .getUserMedia(contraint)
         .then(this.handleSuccess)
-        .catch()
+        .catch(e => {
+          console.log(e)
+        })
     },
     handleSuccess(stream) {
+      this.isRecording = true
       this.recorder = new MediaRecorder(stream)
       this.recorder.start()
       console.log(this.recorder.state)
@@ -82,14 +84,17 @@ export default {
   }
 
   .record {
+    box-sizing: border-box;
     background-color: #f9f0af;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     max-height: 12vh;
-    min-height: 11vh;
     padding: 16px 0;
+    min-height: 120px;
+    padding: 8px 0;
+    border-radius: 5px;
 
     input {
       border: none;
