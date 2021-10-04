@@ -6,14 +6,15 @@ AI 기반 정신건강 플랫폼
 
 ```
 git clone --recurse-submodules --remote-submodules https://github.com/osamhack2021/AI_WEB_AICARE_AIM.git -b ai-koremo
+cd AI_WEB_AICARE_AIM
 conda env create -n python3.7 --file environment.yml
 conda activate python3.7
 # Start the server:
 python -m ai.simple-keras-rest-api.run_keras_server ai/koremo/model/model_for_6.h5
 # Submit a request via cURL:
-curl -X POST -F wav=@ai/data/F_000002.wav 'http://localhost:5000/predict'
+curl -X POST -F wav=@ai/으악-내눈.wav http://localhost:5000/predict
 # Submit a request via Python:
-python -m ai.simple-keras-rest-api.simple_request ai/data/F_000002.wav
+python -m ai.simple-keras-rest-api.simple_request ai/으악-내눈.wav
 conda deactivate
 ```
 
