@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="feedback"></div>
+    <div class="feedback">일기를 작성해주시면 분석결과가 나타납니다.</div>
     <div class="record">
       <input
         v-model="diaryName"
@@ -65,6 +65,18 @@ export default {
   box-sizing: border-box;
   height: $page-height;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .feedback {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: gray;
+  }
 
   .record {
     background-color: #f9f0af;
@@ -72,7 +84,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
+    height: 10vh;
     padding: 16px 0;
 
     input {
