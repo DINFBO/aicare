@@ -129,3 +129,12 @@ body {
   height: 100vh !important;
   font-family: 'Gowun Dodum', sans-serif;
 }
+
+input,
+button {
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
