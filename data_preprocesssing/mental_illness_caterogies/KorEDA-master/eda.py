@@ -1,5 +1,3 @@
-#-*- coding: utf-8 -*-
-
 import random
 import pickle
 import re
@@ -134,7 +132,7 @@ def add_word(new_words):
 
 
 
-def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1, num_aug=9):
+def EDA(sentence, rd=1, rs=1, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1, num_aug=9):
 	sentence = get_only_hangul(sentence)
 	words = sentence.split(' ')
 	words = [word for word in words if word is not ""]
@@ -148,24 +146,26 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1, num_aug=9)
 	n_rs = max(1, int(alpha_rs*num_words))
 
 	# sr
-	for _ in range(num_new_per_technique):
-		a_words = synonym_replacement(words, n_sr)
-		augmented_sentences.append(' '.join(a_words))
+	# for _ in range(num_new_per_technique):
+	# 	a_words = synonym_replacement(words, n_sr)
+	# 	augmented_sentences.append(' '.join(a_words))
 
 	# ri
-	for _ in range(num_new_per_technique):
-		a_words = random_insertion(words, n_ri)
-		augmented_sentences.append(' '.join(a_words))
+	# for _ in range(num_new_per_technique):
+	# 	a_words = random_insertion(words, n_ri)
+	# 	augmented_sentences.append(' '.join(a_words))
 
 	# rs
-	for _ in range(num_new_per_technique):
-		a_words = random_swap(words, n_rs)
-		augmented_sentences.append(" ".join(a_words))
+	if rs == 1:
+		for _ in range(num_new_per_technique):
+			a_words = random_swap(words, n_rs)
+			augmented_sentences.append(" ".join(a_words))
 
 	# rd
-	for _ in range(num_new_per_technique):
-		a_words = random_deletion(words, p_rd)
-		augmented_sentences.append(" ".join(a_words))
+	if rd == 1:
+		for _ in range(num_new_per_technique):
+			a_words = random_deletion(words, p_rd)
+			augmented_sentences.append(" ".join(a_words))
 
 	augmented_sentences = [get_only_hangul(sentence) for sentence in augmented_sentences]
 	random.shuffle(augmented_sentences)
@@ -178,4 +178,4 @@ def EDA(sentence, alpha_sr=0.1, alpha_ri=0.1, alpha_rs=0.1, p_rd=0.1, num_aug=9)
 
 	augmented_sentences.append(sentence)
 
-	return augmented_sentences
+	return list(set(augmented_sentences))
