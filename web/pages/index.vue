@@ -27,7 +27,7 @@
           </li>
         </ul>
       </div>
-      <div class="goto">
+      <div class="goto" @click="$router.push('/write-diary')">
         <span class="goto__title">오늘은 어떤 일이 있으셨나요?</span>
         <span class="goto__btn">일기 쓰러 가기</span>
       </div>
@@ -118,38 +118,11 @@
     padding: 24px 0;
     background-color: #f9f0af;
     box-sizing: border-box !important;
-    // height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
-    &__write-diary,
-    &__show-analysis,
-    &__comunity {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      margin: 12px 0 !important;
-
-      span {
-        max-width: 60%;
-        word-break: keep-all;
-      }
-
-      button {
-        font-family: 'Gowun Dodum', sans-serif;
-        width: 120px;
-        height: 40px;
-        word-break: keep-all;
-        background-color: #e6c823;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-      }
-    }
+    line-height: 1.5;
   }
 }
 </style>
