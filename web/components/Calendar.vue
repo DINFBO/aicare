@@ -5,6 +5,7 @@
         :attributes="attrs"
         mode="date"
         is-expanded
+        :max-date='new Date()'
         @dayclick="goDetail"
       />
     </no-ssr>
@@ -38,7 +39,9 @@ export default {
   },
   methods: {
     goDetail(day) {
-      this.$router.push(`history/${day.id}`)
+      const today = new Date()
+      if (day.day <= today.getDate())
+        this.$router.push(`history/${day.id}`)
     },
   },
 }
