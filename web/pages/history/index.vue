@@ -1,9 +1,17 @@
 <template>
   <div class="container">
     <div class="feelings">
-      <bar-chart :data="chartData" :options="barChartOptions" class="chart"></bar-chart>
+      <span class="feelings__title" @click="isClicked">감정 그래프 보기</span>
+      <div v-if="chartFlag" class="feelings__chart">
+        <bar-chart
+          :data="chartData"
+          :options="barChartOptions"
+          class="chart"
+        ></bar-chart>
+      </div>
     </div>
     <div class="calendar">
+      <span class="calendar__title">지난 일기 보기</span>
       <no-ssr>
         <v-calendar
           :attributes="attrs"
@@ -83,11 +91,15 @@ export default {
           ],
         },
       },
+      chartFlag: false,
     }
   },
   methods: {
     goDetail(day) {
       this.$router.push(`history/${day.id}`)
+    },
+    isClicked() {
+      this.chartFlag = !this.chartFlag
     },
   },
 }
@@ -102,12 +114,22 @@ export default {
 
   .feelings {
     box-sizing: border-box !important;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-
-    height: 200px;
     width: 100%;
+    padding: 8px 0;
+    border-radius: 5px;
+    margin-bottom: 16px !important;
+
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px !important;
+    }
+
+    &__chart {
+      display: flex;
+      justify-content: center;
+      height: 200px;
+    }
 
     .chart {
       width: 100%;
@@ -129,6 +151,11 @@ export default {
         padding: 20px 0;
         color: $gray-darken;
       }
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
     }
   }
 }
