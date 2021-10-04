@@ -46,9 +46,11 @@ export default {
 
 <style lang="scss" scoped>
 div {
+  padding-top: 16px;
   &::v-deep .vc-container {
     border: none;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
     .vc-header,
     .vc-arrows-container {

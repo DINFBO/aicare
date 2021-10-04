@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <div class="feelings">
-      <span class="feelings__title" @click="isClicked">감정 그래프 보기</span>
+      <span class="feelings__title" @click="isClicked">
+        감정 그래프 보기 &nbsp;
+        <span v-if="!chartFlag"><i class="fas fa-chevron-down"></i></span>
+        <span v-else><i class="fas fa-chevron-up"></i></span>
+      </span>
       <div v-if="chartFlag" class="feelings__chart">
         <bar-chart
           :data="chartData"
@@ -44,8 +48,7 @@ export default {
           display: false,
         },
         title: {
-          display: true,
-          text: '감정 빈도',
+          display: false,
         },
         scales: {
           xAxes: [
@@ -88,7 +91,7 @@ export default {
   .feelings {
     box-sizing: border-box !important;
     width: 100%;
-    padding: 8px 0;
+    padding: 16px 0;
     border-radius: 5px;
     margin-bottom: 16px !important;
 
