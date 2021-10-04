@@ -9,7 +9,12 @@
         <div class="alarm-circle"></div>
       </div>
     </header>
-    <alarm-modal v-if="isModalOpened" @closeAlarmModal="isModalOpened=false" />
+    <transition name="modalSlide">
+      <alarm-modal
+        v-if="isModalOpened"
+        @closeAlarmModal="isModalOpened = false"
+      />
+    </transition>
   </div>
 </template>
 
@@ -18,6 +23,7 @@ import AlarmModal from './AlarmModal.vue'
 
 export default {
   components: { AlarmModal },
+  transition: 'modalSlide',
   data() {
     return {
       isModalOpened: false,
@@ -32,6 +38,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
 .header {
   padding: 16px;
   display: flex;
@@ -67,5 +74,31 @@ export default {
     text-decoration: none;
     color: $gray;
   }
+}
+
+.modalSlide-enter-active,
+.modalSlide-leave-active {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+}
+
+.modalSlide-enter {
+  top: 100%;
+  opacity: 0;
+}
+
+.modalSlide-enter-to {
+  top: 0;
+  opacity: 1;
+}
+
+.modalSlide-leave {
+  top: 0;
+  opacity: 1;
+}
+
+.modalSlide-leave-to {
+  top: 100%;
+  opacity: 0;
 }
 </style>
