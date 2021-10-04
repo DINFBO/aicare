@@ -13,7 +13,10 @@
       </div>
     </div>
     <div class="footer">
-      <span>아직 회원이 아니신가요? <em>회원가입</em></span>
+      <span
+        >아직 회원이 아니신가요?
+        <em @click="$router.push('/signup')">회원가입</em></span
+      >
     </div>
   </div>
 </template>
