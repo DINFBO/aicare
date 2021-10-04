@@ -1,16 +1,34 @@
 <template>
-  <header class="header">
-    <div class="header__title">
-      <NuxtLink to="/">AI CARE</NuxtLink>
-    </div>
-    <div class="header__alarm">
-      <span><i class="far fa-bell"></i></span>
-      <div class="alarm-circle"></div>
-    </div>
-  </header>
+  <div>
+    <header class="header">
+      <div class="header__title">
+        <NuxtLink to="/">AI CARE</NuxtLink>
+      </div>
+      <div class="header__alarm">
+        <span @click="showAlarmModal"><i class="far fa-bell"></i></span>
+        <div class="alarm-circle"></div>
+      </div>
+    </header>
+    <alarm-modal v-if="isModalOpened" @closeAlarmModal="isModalOpened=false" />
+  </div>
 </template>
+
 <script>
-export default {}
+import AlarmModal from './AlarmModal.vue'
+
+export default {
+  components: { AlarmModal },
+  data() {
+    return {
+      isModalOpened: false,
+    }
+  },
+  methods: {
+    showAlarmModal() {
+      this.isModalOpened = true
+    },
+  },
+}
 </script>
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
@@ -20,20 +38,18 @@ export default {}
   justify-content: space-between;
   align-items: center;
   border-radius: 0px 0px 5px 5px;
-  // box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  // box-shadow: 0px 3px 15px 2px rgba(155, 155, 155, 0.6);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  // background-color: $gray;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   color: $gray;
 
   &__title {
     font-weight: 700;
-    font-size: 24px;
+    font-size: $heading;
     font-family: 'Caveat', cursive;
   }
 
   &__alarm {
-    font-size: 24px;
+    font-size: $heading;
     position: relative;
 
     .alarm-circle {
@@ -44,7 +60,6 @@ export default {}
       height: 7px;
       border-radius: 50%;
       background-color: $yellow;
-
     }
   }
 
