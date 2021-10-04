@@ -1,3 +1,7 @@
 [submodule "ai/koremo"]
 	path = ai/koremo
 	url = https://github.com/yhkee0404/koremo.git
+[submodule "ai/simple-keras-rest-api"]
+	path = ai/simple-keras-rest-api
+	url = https://github.com/yhkee0404/simple-keras-rest-api.git
+	branch = koremo
