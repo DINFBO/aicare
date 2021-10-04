@@ -7,10 +7,12 @@
       <span><i class="fas fa-chart-line"></i></span>
     </div>
     <div class="nav__icon">
-      <span><i class="far fa-calendar"></i></span>
+      <span @click="$router.push('/history')"
+        ><i class="far fa-calendar"></i
+      ></span>
     </div>
     <div class="nav__icon">
-      <i class="fas fa-cog"></i>
+      <span><i class="fas fa-cog"></i></span>
     </div>
   </nav>
 </template>
@@ -24,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   color: $gray;
-  border-top: 1px solid $gray;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px -2px 5px -1px;
 
   &__icon {
     display: flex;
