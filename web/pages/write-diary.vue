@@ -14,6 +14,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -61,6 +62,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .container {
   box-sizing: border-box;
@@ -71,7 +73,7 @@ export default {
   justify-content: space-evenly;
 
   .feedback {
-    height: 60vh;
+    height: 55vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +87,8 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 10vh;
+    max-height: 12vh;
+    min-height: 11vh;
     padding: 16px 0;
 
     input {
@@ -99,7 +102,6 @@ export default {
       border: none;
       padding: 8px 20px;
       font-size: 18px;
-      font-weight: bold;
       color: #ffffff;
       border-radius: 5px;
     }
