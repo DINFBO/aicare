@@ -6,14 +6,11 @@
       </div>
       <div class="header__alarm">
         <span @click="showAlarmModal"><i class="far fa-bell"></i></span>
-        <div class="alarm-circle"></div>
+        <div v-if="isAlarmExist" class="alarm-circle"></div>
       </div>
     </header>
     <transition name="modalSlide">
-      <alarm-modal
-        v-if="isModalOpened"
-        @closeAlarmModal="isModalOpened = false"
-      />
+      <alarm-modal v-if="isModalOpen" @closeAlarmModal="isModalOpen = false" />
     </transition>
   </div>
 </template>
@@ -26,12 +23,13 @@ export default {
   transition: 'modalSlide',
   data() {
     return {
-      isModalOpened: false,
+      isModalOpen: false,
+      isAlarmExist: true,
     }
   },
   methods: {
     showAlarmModal() {
-      this.isModalOpened = true
+      if (this.isAlarmExist) this.isModalOpen = true
     },
   },
 }
