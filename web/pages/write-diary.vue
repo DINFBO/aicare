@@ -54,6 +54,7 @@ export default {
     },
     stopRecording() {
       this.isRecording = false
+      this.diaryName = ''
       this.recorder.stop()
       console.log(this.recorder.state)
     },
@@ -91,6 +92,7 @@ export default {
       border: none;
       padding: 8px 16px;
       font-size: 16px;
+      width: 50%;
     }
 
     button {
