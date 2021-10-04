@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
 html,
 body,
 div,
@@ -125,4 +127,5 @@ table {
 
 body {
   height: 100vh !important;
+  font-family: 'Gowun Dodum', sans-serif;
 }

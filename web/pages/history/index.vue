@@ -108,7 +108,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   box-sizing: border-box;
-  height: calc(100vh - 57px - 47px);
+  height: $page-height;
   padding: 16px;
   overflow-y: scroll;
 
@@ -120,7 +120,7 @@ export default {
     margin-bottom: 16px !important;
 
     &__title {
-      font-size: 24px;
+      font-size: $heading;
       font-weight: bold;
       margin-bottom: 16px !important;
     }

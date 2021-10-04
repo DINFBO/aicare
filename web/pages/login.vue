@@ -13,7 +13,10 @@
       </div>
     </div>
     <div class="footer">
-      <span>아직 회원이 아니신가요? <em>회원가입</em></span>
+      <span
+        >아직 회원이 아니신가요?
+        <em @click="$router.push('/signup')">회원가입</em></span
+      >
     </div>
   </div>
 </template>
@@ -25,11 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-
 .container {
   box-sizing: border-box !important;
-  font-family: 'Gowun Dodum', sans-serif;
   height: 100vh;
   padding: 50% 16px 47px;
   display: flex;
@@ -54,11 +54,13 @@ export default {
       flex-direction: column;
 
       input {
+        box-sizing: border-box !important;
         background-color: rgba(245, 223, 77, 0.3);
         color: $gray;
         border: none;
         margin: 8px 0;
-        padding: 8px;
+        padding: 16px 8px;
+        font-size: 16px;
       }
 
       .button {
@@ -70,7 +72,7 @@ export default {
           box-sizing: border-box !important;
           margin-top: 36px;
           padding: 10px 25px;
-          font-size: 18px;
+          font-size: $sub-heading;
           font-weight: bold;
           border: none;
           border-radius: 5px;

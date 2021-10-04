@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__title">
-      <span>AI CARE</span>
+      <NuxtLink to="/">AI CARE</NuxtLink>
     </div>
     <div class="header__alarm">
       <span><i class="far fa-bell"></i></span>
@@ -46,6 +46,11 @@ export default {}
       background-color: $yellow;
 
     }
+  }
+
+  a {
+    text-decoration: none;
+    color: $gray;
   }
 }
 </style>
