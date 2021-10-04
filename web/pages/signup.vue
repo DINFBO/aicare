@@ -59,11 +59,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-
 .container {
   box-sizing: border-box !important;
-  font-family: 'Gowun Dodum', sans-serif;
   height: 100vh;
   padding: 15vh 16px 47px;
   display: flex;

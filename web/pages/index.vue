@@ -36,16 +36,13 @@
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-
 .container {
-  font-family: 'Gowun Dodum', sans-serif;
   box-sizing: border-box !important;
   padding: 32px 16px;
-  height: calc(100vh - 57px - 47px);
+  height: $page-height;
   overflow-x: scroll;
   .title {
-    font-size: 18px;
+    font-size: $sub-heading;
     margin-bottom: 24px !important;
 
     &--bold {
