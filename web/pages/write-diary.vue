@@ -78,7 +78,7 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: gray;
+    background-color: #D5D5D8;
   }
 
   .record {
@@ -95,7 +95,7 @@ export default {
       border: none;
       padding: 8px 16px;
       font-size: 16px;
-      width: 50%;
+      width: 70%;
     }
 
     button {
@@ -107,11 +107,11 @@ export default {
     }
 
     .start-btn {
-      background-color: rgb(45, 172, 45);
+      background-color: #6B9368;
     }
 
     .stop-btn {
-      background-color: red;
+      background-color: #B65A5A;
     }
   }
 }
