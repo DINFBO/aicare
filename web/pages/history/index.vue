@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <div class="feelings">
-      <span class="feelings__title" @click="isClicked">감정 그래프 보기</span>
+      <span class="feelings__title" @click="isClicked">
+        감정 그래프 보기 &nbsp;
+        <span v-if="!chartFlag"><i class="fas fa-chevron-down"></i></span>
+        <span v-else><i class="fas fa-chevron-up"></i></span>
+      </span>
       <div v-if="chartFlag" class="feelings__chart">
         <bar-chart
           :data="chartData"
@@ -12,46 +16,22 @@
     </div>
     <div class="calendar">
       <span class="calendar__title">지난 일기 보기</span>
-      <no-ssr>
-        <v-calendar
-          :attributes="attrs"
-          mode="date"
-          is-expanded
-          @dayclick="goDetail"
-        />
-      </no-ssr>
+      <Calendar />
     </div>
   </div>
 </template>
 
 <script>
+import Calendar from '../../components/Calendar.vue'
 import BarChart from '~/components/BarChart'
 
 export default {
   components: {
     BarChart,
+    Calendar,
   },
   data() {
     return {
-      attrs: [
-        {
-          key: 'today',
-          highlight: {
-            style: {
-              background: '#E6C823',
-            },
-            contentStyle: {
-              color: '#ffffff',
-            },
-          },
-          dates: new Date(),
-        },
-        {
-          key: 'writeDay',
-          dot: true,
-          dates: [],
-        },
-      ],
       chartData: {
         labels: ['우울', '기쁨', '분노'],
         datasets: [
@@ -68,8 +48,7 @@ export default {
           display: false,
         },
         title: {
-          display: true,
-          text: '감정 빈도',
+          display: false,
         },
         scales: {
           xAxes: [
@@ -95,9 +74,6 @@ export default {
     }
   },
   methods: {
-    goDetail(day) {
-      this.$router.push(`history/${day.id}`)
-    },
     isClicked() {
       this.chartFlag = !this.chartFlag
     },
@@ -115,7 +91,7 @@ export default {
   .feelings {
     box-sizing: border-box !important;
     width: 100%;
-    padding: 8px 0;
+    padding: 16px 0;
     border-radius: 5px;
     margin-bottom: 16px !important;
 
@@ -137,22 +113,6 @@ export default {
   }
 
   .calendar {
-    &::v-deep .vc-container {
-      border: none;
-      border-radius: 5px;
-
-      .vc-header {
-        padding: 20px 18px;
-      }
-      .vc-weekday {
-        color: $black;
-      }
-      .vc-day {
-        padding: 20px 0;
-        color: $gray-darken;
-      }
-    }
-
     &__title {
       font-size: 24px;
       font-weight: bold;

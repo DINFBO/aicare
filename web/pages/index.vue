@@ -27,7 +27,7 @@
           </li>
         </ul>
       </div>
-      <div class="goto">
+      <div class="goto" @click="$router.push('/write-diary')">
         <span class="goto__title">오늘은 어떤 일이 있으셨나요?</span>
         <span class="goto__btn">일기 쓰러 가기</span>
       </div>
@@ -41,9 +41,13 @@
   padding: 32px 16px;
   height: $page-height;
   overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   .title {
     font-size: $sub-heading;
-    margin-bottom: 24px !important;
+    // margin-bottom: 24px !important;
 
     &--bold {
       font-weight: bold;
@@ -52,7 +56,6 @@
   }
 
   .user {
-    // height: 48px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,69 +89,42 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 90px !important;
-  }
 
-  .hits-posts {
-    width: 100%;
-    box-sizing: border-box !important;
-    padding: 12px 16px;
-    // border: 1px solid rgb(147, 149, 151);
-    // border: 1px solid rgba(147, 149, 151, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    border-radius: 5px;
-
-    ul {
-      li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 12px 0 !important;
-      }
-    }
-
-    &__timestamp {
-      font-size: 12px;
-      color: #939597;
-    }
-  }
-
-  .goto {
-    width: 100%;
-    padding: 24px 0;
-    background-color: #f9f0af;
-    box-sizing: border-box !important;
-    // height: 160px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    &__write-diary,
-    &__show-analysis,
-    &__comunity {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .hits-posts {
       width: 100%;
-      margin: 12px 0 !important;
+      box-sizing: border-box !important;
+      padding: 12px 16px;
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px,
+        rgba(0, 0, 0, 0.24) 0px 1px 2px;
+      border-radius: 5px;
 
-      span {
-        max-width: 60%;
-        word-break: keep-all;
+      ul {
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 12px 0 !important;
+          cursor: pointer;
+        }
       }
 
-      button {
-        font-family: 'Gowun Dodum', sans-serif;
-        width: 120px;
-        height: 40px;
-        word-break: keep-all;
-        background-color: #e6c823;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
+      &__timestamp {
+        font-size: 12px;
+        color: #939597;
       }
+    }
+
+    .goto {
+      width: 100%;
+      padding: 24px 0;
+      background-color: #f9f0af;
+      box-sizing: border-box !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      line-height: 1.5;
+      cursor: pointer;
     }
   }
 }
