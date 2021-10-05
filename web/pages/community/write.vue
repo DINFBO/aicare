@@ -2,17 +2,37 @@
   <div class="container">
     <div class="title">작성하기</div>
     <div class="form">
-      <input type="text" placeholder="제목을 입력하세요" required />
-      <textarea cols="30" rows="10" required></textarea>
+      <input
+        v-model="title"
+        type="text"
+        placeholder="제목을 입력하세요"
+        required
+      />
+      <textarea v-model="content" cols="30" rows="10" required></textarea>
       <div class="form__btn">
-        <button>저장</button>
+        <button @click="handleSubmit">저장</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      title: '',
+      content: '',
+    }
+  },
+  methods: {
+    handleSubmit() {
+      console.log(this.title, this.content)
+      this.title = ''
+      this.content = ''
+      this.$router.push('/community')
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -42,8 +62,13 @@ export default {}
     input {
       box-sizing: border-box !important;
       color: $gray;
-      border: none;
       margin: 8px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    textarea {
+      color: $gray;
       padding: 8px;
       font-size: 16px;
     }
