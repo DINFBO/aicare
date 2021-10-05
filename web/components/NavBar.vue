@@ -4,10 +4,10 @@
       <NuxtLink to="/"><i class="fas fa-home"></i></NuxtLink>
     </div>
     <div class="nav__icon">
-      <NuxtLink to="/analysis"><i class="fas fa-chart-line"></i></NuxtLink>
+      <NuxtLink to="/history"><i class="far fa-calendar"></i></NuxtLink>
     </div>
     <div class="nav__icon">
-      <NuxtLink to="/history"><i class="far fa-calendar"></i></NuxtLink>
+      <NuxtLink to="/community"><i class="fab fa-slideshare"></i></i></NuxtLink>
     </div>
     <div class="nav__icon">
       <NuxtLink to="/config"><i class="fas fa-cog"></i></NuxtLink>
