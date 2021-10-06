@@ -6,13 +6,18 @@
     <div class="write">
       <nuxt-link to="/community/write">작성하기</nuxt-link>
     </div>
-    <PostItem v-for="i in 10" :key="i" />
+    <PostItem v-for="i in 10" :key="i" @click.native="goPostDetail(i)"/>
   </div>
 </template>
 <script>
 import PostItem from '../../components/PostItem.vue'
 export default {
   components: { PostItem },
+  methods: {
+    goPostDetail(id) {
+      this.$router.push(`community/${id}`)
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>

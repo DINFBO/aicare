@@ -28,6 +28,7 @@ export default {}
   width: 100%;
   min-height: 50px;
   margin: 24px 0;
+  cursor: pointer;
 
   div:first-child {
     flex: 1;
@@ -43,7 +44,7 @@ export default {}
     font-size: 16px;
   }
   &__author {
-    display:flex;
+    display: flex;
     align-items: center;
     .author-img {
       font-size: 14px;
