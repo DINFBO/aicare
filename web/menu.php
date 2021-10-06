@@ -25,7 +25,7 @@ else if(strpos($uri, "consulting") !== false) {
     $m4= "text-pink-500 hover:text-pink-600";
 	$mi_4="text-pink-500 hover:text-pink-600";
 }
-else if(strpos($uri, "diag") !== false) {  
+else {  
     $m0= "text-pink-500 hover:text-pink-600";
 	$mi_0="text-pink-500 hover:text-pink-600";
 }
@@ -68,7 +68,7 @@ else if(strpos($uri, "diag") !== false) {
             <hr class="border-b-1 border-blueGray-200 md:hidden">
             <ul class="md:flex-col md:min-w-full flex flex-row list-none">
                 <li class="items-center items-center-m">
-                    <a href="./diag.php" class="text-xs uppercase py-3 font-bold block <?=$m0?>">
+                    <a href="./diary.php" class="text-xs uppercase py-3 font-bold block <?=$m0?>">
                         <i class="fas fa-heart mr-2 text-sm <?=$mi_0?> bottom_ic"></i>
                         오늘마음
                     </a>
@@ -84,7 +84,7 @@ else if(strpos($uri, "diag") !== false) {
                 <li class="items-center items-center-m">
                     <a href="./music.php" class="text-xs uppercase py-3 font-bold block <?=$m3?>">
                         <i class="fas fa-music mr-2 text-sm <?=$mi_3?> bottom_ic"></i>
-                        음악추천
+                        추천음악
                     </a>
                 </li>
 
