@@ -31,13 +31,18 @@
     </div>
     <div class="comments">
       <div class="comments__write">
-        <input type="text" />
+        <input type="text" required />
         <div class="comments__submit">
           <button>작성</button>
         </div>
       </div>
       <div class="comments__items">
-        <CommentItem v-for="i in 4" :key="i"/>
+        <template v-if="isCommentExist">
+          <CommentItem v-for="i in 4" :key="i" />
+        </template>
+        <template v-else>
+          <div class="no-comments">댓글을 작성해주세요.</div>
+        </template>
       </div>
     </div>
   </div>
@@ -47,6 +52,11 @@ import CommentItem from '../../components/CommentItem.vue'
 
 export default {
   components: { CommentItem },
+  data() {
+    return {
+      isCommentExist: true,
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -136,6 +146,10 @@ export default {
           rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
           rgba(0, 0, 0, 0.07) 0px 32px 64px;
       }
+    }
+
+    .no-comments {
+      text-align: center;
     }
   }
 }
