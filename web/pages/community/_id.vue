@@ -95,10 +95,11 @@ export default {
     }
     .recommend {
       button {
-        border: none;
+        font-size: $sub-heading;
+        border: 1px solid green;
         border-radius: 5px;
         padding: 8px 16px;
-        background-color: green;
+        color: green;
       }
     }
   }
