@@ -36,12 +36,18 @@
           <button>작성</button>
         </div>
       </div>
-      <div class="comments__items"></div>
+      <div class="comments__items">
+        <CommentItem v-for="i in 4" :key="i"/>
+      </div>
     </div>
   </div>
 </template>
 <script>
-export default {}
+import CommentItem from '../../components/CommentItem.vue'
+
+export default {
+  components: { CommentItem },
+}
 </script>
 <style lang="scss" scoped>
 .container {
