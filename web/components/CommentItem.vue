@@ -17,18 +17,25 @@ export default {}
 </script>
 <style lang="scss" scoped>
 .comment {
-  margin: 16px 0;
+  margin: 12px 0;
+  padding: 8px;
 
   &__profile {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
+    font-size: $sub-heading;
 
     .timestamp {
       font-size: $description;
       color: $gray;
     }
+  }
+
+  &__content {
+    word-break: keep-all;
+    line-height: 1.1;
   }
 }
 </style>

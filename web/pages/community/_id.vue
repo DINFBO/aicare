@@ -54,6 +54,7 @@ export default {
   box-sizing: border-box;
   height: $page-height;
   padding: 16px;
+  overflow-y: scroll;
 
   .author {
     display: flex;
@@ -109,7 +110,7 @@ export default {
     border-top: 1px solid #e3e3e3;
 
     &__write {
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
