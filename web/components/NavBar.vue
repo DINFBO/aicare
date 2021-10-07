@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <div class="nav__icon">
-      <NuxtLink to="/"><i class="fas fa-home"></i></NuxtLink>
+      <NuxtLink to="/" exact><i class="fas fa-home"></i></NuxtLink>
     </div>
     <div class="nav__icon">
       <NuxtLink to="/history"><i class="far fa-calendar"></i></NuxtLink>
@@ -35,7 +35,7 @@
   a {
     color: $gray;
   }
-  a.nuxt-link-exact-active {
+  a.nuxt-link-active {
     color: $black;
   }
 }
