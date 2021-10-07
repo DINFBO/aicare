@@ -112,10 +112,10 @@ export default {
     .recommend {
       button {
         font-size: $sub-heading;
-        border: 1px solid green;
+        border: 1px solid $recommend;
         border-radius: 5px;
         padding: 8px 16px;
-        color: green;
+        color: $recommend;
       }
     }
   }
