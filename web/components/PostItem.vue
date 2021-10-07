@@ -12,9 +12,10 @@
         <div class="post__timestamp">2021-10-05</div>
       </div>
     </div>
-    <div class="post__recommend">
-      <span>5</span>
-    </div>
+    <button class="post__recommend">
+      <span><i class="fas fa-thumbs-up"></i></span>
+      5
+    </button>
   </div>
 </template>
 <script>
@@ -54,16 +55,21 @@ export default {}
 
   &__recommend {
     box-sizing: border-box;
-    padding: 12px;
+    width: 50px;
+    padding: 4px 6px;
     margin-left: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: $sub-heading;
+    font-size: $description;
     font-weight: bold;
-    color: $white;
-    background-color: rgb(133, 211, 133);
-    border-radius: 10px;
+    color: $recommend;
+    border: 1px solid $recommend;
+    border-radius: 3px;
+
+    span:first-child {
+      margin-right: 5px;
+    }
   }
 }
 </style>
