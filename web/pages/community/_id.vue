@@ -33,7 +33,7 @@
       <div class="comments__write">
         <input type="text" required />
         <div class="comments__submit">
-          <button>작성</button>
+          <button @click="handelCommentSubmit">작성</button>
         </div>
       </div>
       <div class="comments__items">
@@ -54,8 +54,13 @@ export default {
   components: { CommentItem },
   data() {
     return {
-      isCommentExist: true,
+      isCommentExist: false,
     }
+  },
+  methods: {
+    handelCommentSubmit() {
+      this.isCommentExist = true
+    },
   },
 }
 </script>
