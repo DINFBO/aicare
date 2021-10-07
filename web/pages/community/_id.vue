@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="recommend">
-        <button>
+        <button @click="recommendPost">
           <span><i class="fas fa-thumbs-up"></i></span>
-          5
+          {{ recommendCount }}
         </button>
       </div>
     </div>
@@ -55,9 +55,20 @@ export default {
   data() {
     return {
       isCommentExist: false,
+      recommendCount: 5,
+      isRecommend: false,
     }
   },
   methods: {
+    recommendPost() {
+      if (!this.isRecommend) {
+        this.isRecommend = true
+        this.recommendCount++
+      } else {
+        this.isRecommend = false
+        this.recommendCount--
+      }
+    },
     handelCommentSubmit() {
       this.isCommentExist = true
     },
