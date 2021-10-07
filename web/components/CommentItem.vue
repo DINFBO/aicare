@@ -27,6 +27,14 @@ export default {}
     margin-bottom: 12px;
     font-size: $sub-heading;
 
+    .author {
+      img {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+      }
+    }
+
     .timestamp {
       font-size: $description;
       color: $gray;
