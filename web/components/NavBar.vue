@@ -1,13 +1,13 @@
 <template>
   <nav class="nav">
     <div class="nav__icon">
-      <NuxtLink to="/"><i class="fas fa-home"></i></NuxtLink>
-    </div>
-    <div class="nav__icon">
-      <NuxtLink to="/analysis"><i class="fas fa-chart-line"></i></NuxtLink>
+      <NuxtLink to="/" exact><i class="fas fa-home"></i></NuxtLink>
     </div>
     <div class="nav__icon">
       <NuxtLink to="/history"><i class="far fa-calendar"></i></NuxtLink>
+    </div>
+    <div class="nav__icon">
+      <NuxtLink to="/community"><i class="fab fa-slideshare"></i></i></NuxtLink>
     </div>
     <div class="nav__icon">
       <NuxtLink to="/config"><i class="fas fa-cog"></i></NuxtLink>
@@ -35,7 +35,7 @@
   a {
     color: $gray;
   }
-  a.nuxt-link-exact-active {
+  a.nuxt-link-active {
     color: $black;
   }
 }
