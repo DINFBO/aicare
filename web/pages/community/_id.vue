@@ -8,11 +8,16 @@
           <span class="timestamp">2021-10-05</span>
         </div>
       </div>
-      <div class="recommend">
-        <button @click="recommendPost">
-          <span><i class="fas fa-thumbs-up"></i></span>
-          {{ recommendCount }}
-        </button>
+      <div class="action">
+        <template v-if="isWritter">
+          <button class="recommend" @click="recommendPost">
+            <span><i class="fas fa-thumbs-up"></i></span>
+            {{ recommendCount }}
+          </button>
+        </template>
+        <template v-else>
+          <button class="delete-post" @click="deletePost">삭제하기</button>
+        </template>
       </div>
     </div>
     <div class="content">
@@ -47,6 +52,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import CommentItem from '../../components/CommentItem.vue'
 
@@ -57,6 +63,7 @@ export default {
       isCommentExist: false,
       recommendCount: 5,
       isRecommend: false,
+      isWritter: false,
     }
   },
   methods: {
@@ -69,12 +76,14 @@ export default {
         this.recommendCount--
       }
     },
+    deletePost() {},
     handelCommentSubmit() {
       this.isCommentExist = true
     },
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .container {
   box-sizing: border-box;
@@ -109,13 +118,21 @@ export default {
         color: $gray;
       }
     }
-    .recommend {
-      button {
+    .action {
+      .recommend {
         font-size: $sub-heading;
         border: 1px solid $recommend;
         border-radius: 5px;
         padding: 8px 16px;
         color: $recommend;
+      }
+
+      .delete-post {
+        font-size: $description;
+        border: 1px solid #a83838;
+        border-radius: 5px;
+        padding: 8px;
+        color: #a83838;
       }
     }
   }
@@ -129,6 +146,18 @@ export default {
     }
     &__content {
       line-height: 1.2;
+    }
+
+    .del-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+
+      button {
+        border: 1px solid #a83838;
+        border-radius: 5px;
+        color: #a83838;
+      }
     }
   }
 
