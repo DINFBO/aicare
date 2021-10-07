@@ -2,11 +2,10 @@
   <div class="container">
     <div class="title">
       <span>감정을 공유해보세요</span>
+      <nuxt-link class="write" to="/community/write">글 쓰기</nuxt-link>
     </div>
-    <div class="write">
-      <nuxt-link to="/community/write">작성하기</nuxt-link>
-    </div>
-    <PostItem v-for="i in 10" :key="i" @click.native="goPostDetail(i)"/>
+
+    <PostItem v-for="i in 10" :key="i" @click.native="goPostDetail(i)" />
   </div>
 </template>
 <script>
@@ -16,7 +15,7 @@ export default {
   methods: {
     goPostDetail(id) {
       this.$router.push(`community/${id}`)
-    }
+    },
   },
 }
 </script>
@@ -26,23 +25,29 @@ export default {
   height: $page-height;
   padding: 16px;
   overflow-y: scroll;
-  position: relative;
 
   .title {
-    font-size: $heading;
-    font-weight: bold;
     padding-top: 16px;
     margin-bottom: 36px;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  .write {
-    padding: 8px 16px;
-    background-color: $yellow;
-    position: absolute;
-    top: 32px;
-    right: 16px;
-    border-radius: 5px;
-    a {
+    span {
+      font-size: $heading;
+      font-weight: bold;
+      word-break: keep-all;
+      line-height: 1.2;
+    }
+
+    .write {
+      padding: 8px;
+      max-height: 30px;
+      border: 1px solid $gray;
+      color: $white;
+      border-radius: 5px;
+      font-size: $sub-heading;
+
       text-decoration: none;
       color: $gray;
     }
