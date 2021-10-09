@@ -10,13 +10,15 @@
       </div>
       <div class="action">
         <template v-if="isWritter">
+          <button class="delete-post" @click="showDeleteModal = true">
+            삭제하기
+          </button>
+        </template>
+        <template v-else>
           <button class="recommend" @click="recommendPost">
             <span><i class="fas fa-thumbs-up"></i></span>
             {{ recommendCount }}
           </button>
-        </template>
-        <template v-else>
-          <button class="delete-post" @click="deletePost">삭제하기</button>
         </template>
       </div>
     </div>
@@ -50,20 +52,27 @@
         </template>
       </div>
     </div>
+    <DeleteModal
+      v-if="showDeleteModal"
+      @delete="deletePost"
+      @cancel="showDeleteModal = false"
+    />
   </div>
 </template>
 
 <script>
 import CommentItem from '../../components/CommentItem.vue'
+import DeleteModal from '../../components/DeleteModal.vue'
 
 export default {
-  components: { CommentItem },
+  components: { CommentItem, DeleteModal },
   data() {
     return {
       isCommentExist: false,
       recommendCount: 5,
       isRecommend: false,
-      isWritter: false,
+      isWritter: true,
+      showDeleteModal: false,
     }
   },
   methods: {
@@ -76,7 +85,9 @@ export default {
         this.recommendCount--
       }
     },
-    deletePost() {},
+    deletePost() {
+      this.showDeleteModal = false
+    },
     handelCommentSubmit() {
       this.isCommentExist = true
     },
@@ -86,10 +97,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box;
   height: $page-height;
   padding: 16px;
-  overflow-y: scroll;
 
   .author {
     display: flex;
@@ -120,6 +129,7 @@ export default {
     }
     .action {
       .recommend {
+        background-color: transparent;
         font-size: $sub-heading;
         border: 1px solid $recommend;
         border-radius: 5px;
@@ -128,6 +138,7 @@ export default {
       }
 
       .delete-post {
+        background-color: transparent;
         font-size: $description;
         border: 1px solid #a83838;
         border-radius: 5px;

@@ -10,21 +10,33 @@
     <div class="comment__content">
       <span>제발 손절해... 정신에 해로울뿐인 동기는 네버</span>
       <template v-if="isCommentWritter">
-        <button @click="deleteComment"><i class="far fa-trash-alt"></i></button>
+        <button @click="showDeleteModal = true">
+          <i class="far fa-trash-alt"></i>
+        </button>
       </template>
     </div>
+    <DeleteModal
+      v-if="showDeleteModal"
+      @delete="deleteComment"
+      @cancel="showDeleteModal = false"
+    />
   </div>
 </template>
 
 <script>
+import DeleteModal from './DeleteModal.vue'
 export default {
+  components: { DeleteModal },
   data() {
     return {
       isCommentWritter: true,
+      showDeleteModal: false,
     }
   },
   methods: {
-    deleteComment() {},
+    deleteComment() {
+      this.showDeleteModal = false
+    },
   },
 }
 </script>
@@ -67,6 +79,7 @@ export default {
     }
     button {
       border: none;
+      background-color: transparent;
       font-size: 16px;
       color: #a83838;
     }

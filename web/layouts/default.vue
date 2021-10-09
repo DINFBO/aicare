@@ -1,7 +1,9 @@
 <template>
   <div class="app">
     <Header />
-    <Nuxt />
+    <transition name="fade">
+      <Nuxt />
+    </transition>
     <NavBar />
   </div>
 </template>

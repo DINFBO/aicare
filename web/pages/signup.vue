@@ -60,9 +60,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box !important;
   height: 100vh;
-  padding: 15vh 16px 47px;
+  padding: 10vh 16px 47px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +93,7 @@ export default {
       label {
         box-sizing: border-box !important;
         width: 100%;
-        background-color: rgba(245, 223, 77, 0.3);
+        background-color: $yellow-light;
         color: $gray;
         border: none;
         margin: 8px 0 !important;
@@ -131,17 +130,18 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 24px;
 
     em {
-      color: #c0aa14;
+      color: $yellow-darken;
     }
   }
 
   .success {
-    color: rgb(45, 172, 45);
+    color: $success;
   }
   .fail {
-    color: red;
+    color: $fail;
   }
 }
 </style>

@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box;
   height: $page-height;
   padding: 16px;
   display: flex;
@@ -79,13 +78,13 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid $gray;
     border-radius: 10px;
-    background-color: #D5D5D8;
   }
 
   .record {
     box-sizing: border-box;
-    background-color: #f9f0af;
+    background-color: $yellow-light;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,16 +106,17 @@ export default {
       border: none;
       padding: 8px 20px;
       font-size: 18px;
-      color: #ffffff;
+      background-color: transparent;
       border-radius: 5px;
     }
 
     .start-btn {
-      background-color: #6B9368;
+      color: $success;
+      border: 1px solid $success;
     }
 
     .stop-btn {
-      background-color: #B65A5A;
+      background-color: $fail;
     }
   }
 }

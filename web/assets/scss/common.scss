@@ -1,12 +1,26 @@
 $yellow: #f5df4d;
-$yellow-darken: #e6c823;
+$yellow-light: rgba(245, 223, 77, 0.3);
+$yellow-darken: #c0aa14;
 $gray: #939597;
 $gray-darken: #66686c;
 $black: #000000;
 $white: #ffffff;
-$recommend: #3FA838;
+$recommend: #3fa838;
+$success: #6B9368;
+$fail: #B65A5A;
+
 $page-height: calc(100vh - 57px - 47px);
 
 $heading: 24px;
 $description: 14px;
 $sub-heading: 18px;
+
+.container {
+  box-sizing: border-box !important;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

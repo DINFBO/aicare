@@ -37,7 +37,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box;
   height: $page-height;
   padding: 16px;
 
@@ -56,7 +55,7 @@ export default {
     textarea,
     button {
       border: none;
-      background-color: rgba(245, 223, 77, 0.3);
+      background-color: $yellow-light;
     }
 
     input {
@@ -78,7 +77,7 @@ export default {
       justify-content: flex-end;
       button {
         color: $white;
-        background-color: $yellow-darken;
+        background-color: $yellow;
         padding: 10px 24px;
         border-radius: 5px;
         font-size: $sub-heading;
