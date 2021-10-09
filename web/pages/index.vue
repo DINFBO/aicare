@@ -28,8 +28,8 @@
         </ul>
       </div>
       <div class="goto" @click="$router.push('/write-diary')">
-        <span class="goto__title">오늘은 어떤 일이 있으셨나요?</span>
-        <span class="goto__btn">일기 쓰러 가기</span>
+        <span>오늘은 어떤 일이 있으셨나요?</span>
+        <span>일기 쓰러 가기</span>
       </div>
     </div>
   </div>
@@ -114,7 +114,7 @@
     .goto {
       width: 100%;
       padding: 24px 0;
-      background-color: #f9f0af;
+      background-color: $yellow-light;
       box-sizing: border-box !important;
       display: flex;
       flex-direction: column;
@@ -122,6 +122,10 @@
       justify-content: space-between;
       line-height: 1.5;
       cursor: pointer;
+
+      span:last-child {
+        font-weight: bold;
+      }
     }
   }
 }

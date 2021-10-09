@@ -138,10 +138,10 @@ export default {
   }
 
   .success {
-    color: rgb(45, 172, 45);
+    color: $success;
   }
   .fail {
-    color: red;
+    color: $fail;
   }
 }
 </style>

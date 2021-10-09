@@ -84,7 +84,7 @@ export default {
 
   .record {
     box-sizing: border-box;
-    background-color: #f9f0af;
+    background-color: $yellow-light;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,12 +111,12 @@ export default {
     }
 
     .start-btn {
-      color: #6B9368;
-      border: 1px solid #6B9368;
+      color: $success;
+      border: 1px solid $success;
     }
 
     .stop-btn {
-      background-color: #B65A5A;
+      background-color: $fail;
     }
   }
 }
