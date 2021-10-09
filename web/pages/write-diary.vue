@@ -79,8 +79,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid $gray;
     border-radius: 10px;
-    background-color: #D5D5D8;
   }
 
   .record {
@@ -107,12 +107,13 @@ export default {
       border: none;
       padding: 8px 20px;
       font-size: 18px;
-      color: #ffffff;
+      background-color: transparent;
       border-radius: 5px;
     }
 
     .start-btn {
-      background-color: #6B9368;
+      color: #6B9368;
+      border: 1px solid #6B9368;
     }
 
     .stop-btn {
