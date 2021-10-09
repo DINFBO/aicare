@@ -93,7 +93,7 @@ export default {
       label {
         box-sizing: border-box !important;
         width: 100%;
-        background-color: rgba(245, 223, 77, 0.3);
+        background-color: $yellow-light;
         color: $gray;
         border: none;
         margin: 8px 0 !important;
@@ -133,7 +133,7 @@ export default {
     margin-top: 24px;
 
     em {
-      color: #c0aa14;
+      color: $yellow-darken;
     }
   }
 

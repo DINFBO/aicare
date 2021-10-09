@@ -54,7 +54,7 @@ export default {
 
       input {
         box-sizing: border-box !important;
-        background-color: rgba(245, 223, 77, 0.3);
+        background-color: $yellow-light;
         color: $gray;
         border: none;
         margin: 8px 0;
@@ -87,12 +87,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    // position: absolute;
-    // bottom: 0px;
-    // z-index: 1;
 
     em {
-      color: #c0aa14;
+      color: $yellow-darken;
     }
   }
 }
