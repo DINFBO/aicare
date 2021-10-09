@@ -10,21 +10,33 @@
     <div class="comment__content">
       <span>제발 손절해... 정신에 해로울뿐인 동기는 네버</span>
       <template v-if="isCommentWritter">
-        <button @click="deleteComment"><i class="far fa-trash-alt"></i></button>
+        <button @click="showDeleteDodal = true">
+          <i class="far fa-trash-alt"></i>
+        </button>
       </template>
     </div>
+    <DeleteModal
+      v-if="showDeleteDodal"
+      @delete="deleteComment"
+      @cancel="showDeleteDodal = false"
+    />
   </div>
 </template>
 
 <script>
+import DeleteModal from './DeleteModal.vue'
 export default {
+  components: { DeleteModal },
   data() {
     return {
       isCommentWritter: true,
+      showDeleteDodal: false,
     }
   },
   methods: {
-    deleteComment() {},
+    deleteComment() {
+      this.showDeleteDodal = false
+    },
   },
 }
 </script>
