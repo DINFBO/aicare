@@ -4,7 +4,7 @@ $gray: #939597;
 $gray-darken: #66686c;
 $black: #000000;
 $white: #ffffff;
-$recommend: #3FA838;
+$recommend: #3fa838;
 $page-height: calc(100vh - 57px - 47px);
 
 $heading: 24px;
@@ -14,4 +14,9 @@ $sub-heading: 18px;
 .container {
   box-sizing: border-box !important;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
