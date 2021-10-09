@@ -67,6 +67,7 @@ export default {
     }
     button {
       border: none;
+      background-color: transparent;
       font-size: 16px;
       color: #a83838;
     }

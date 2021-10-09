@@ -10,13 +10,13 @@
       </div>
       <div class="action">
         <template v-if="isWritter">
+          <button class="delete-post" @click="deletePost">삭제하기</button>
+        </template>
+        <template v-else>
           <button class="recommend" @click="recommendPost">
             <span><i class="fas fa-thumbs-up"></i></span>
             {{ recommendCount }}
           </button>
-        </template>
-        <template v-else>
-          <button class="delete-post" @click="deletePost">삭제하기</button>
         </template>
       </div>
     </div>
@@ -120,6 +120,7 @@ export default {
     }
     .action {
       .recommend {
+        background-color: transparent;
         font-size: $sub-heading;
         border: 1px solid $recommend;
         border-radius: 5px;
@@ -128,6 +129,7 @@ export default {
       }
 
       .delete-post {
+        background-color: transparent;
         font-size: $description;
         border: 1px solid #a83838;
         border-radius: 5px;
