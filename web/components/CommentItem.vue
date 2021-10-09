@@ -10,15 +10,15 @@
     <div class="comment__content">
       <span>제발 손절해... 정신에 해로울뿐인 동기는 네버</span>
       <template v-if="isCommentWritter">
-        <button @click="showDeleteDodal = true">
+        <button @click="showDeleteModal = true">
           <i class="far fa-trash-alt"></i>
         </button>
       </template>
     </div>
     <DeleteModal
-      v-if="showDeleteDodal"
+      v-if="showDeleteModal"
       @delete="deleteComment"
-      @cancel="showDeleteDodal = false"
+      @cancel="showDeleteModal = false"
     />
   </div>
 </template>
@@ -30,12 +30,12 @@ export default {
   data() {
     return {
       isCommentWritter: true,
-      showDeleteDodal: false,
+      showDeleteModal: false,
     }
   },
   methods: {
     deleteComment() {
-      this.showDeleteDodal = false
+      this.showDeleteModal = false
     },
   },
 }

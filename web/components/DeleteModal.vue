@@ -28,7 +28,7 @@ export default {}
     text-align: center;
     background-color: $white;
     padding: 40px 24px;
-    border-radius: 20px;
+    border-radius: 10px;
 
     h1 {
       font-size: $sub-heading;
