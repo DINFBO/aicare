@@ -29,7 +29,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box !important;
   height: 100vh;
   padding: 50% 16px 47px;
   display: flex;

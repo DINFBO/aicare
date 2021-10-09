@@ -37,17 +37,14 @@
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box !important;
   padding: 32px 16px;
   height: $page-height;
-  overflow-x: scroll;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .title {
     font-size: $sub-heading;
-    // margin-bottom: 24px !important;
 
     &--bold {
       font-weight: bold;

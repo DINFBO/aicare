@@ -10,3 +10,8 @@ $page-height: calc(100vh - 57px - 47px);
 $heading: 24px;
 $description: 14px;
 $sub-heading: 18px;
+
+.container {
+  box-sizing: border-box !important;
+  overflow-y: scroll;
+}

@@ -60,9 +60,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box !important;
   height: 100vh;
-  padding: 15vh 16px 47px;
+  padding: 10vh 16px 47px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -131,6 +130,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 24px;
 
     em {
       color: #c0aa14;

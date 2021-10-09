@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  box-sizing: border-box;
   height: $page-height;
   padding: 16px;
   display: flex;
