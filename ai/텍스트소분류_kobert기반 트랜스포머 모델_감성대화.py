@@ -76,7 +76,6 @@ chatbot_data.loc[(chatbot_data_pre['감정_소분류'] == "안달하는") | (cha
 chatbot_data.loc[(chatbot_data_pre['감정_소분류'] == "비통한") | (chatbot_data_pre['감정_소분류'] == "슬픔") | (chatbot_data_pre['감정_소분류'] == "우울한") | (chatbot_data_pre['감정_소분류'] == "실망한") | (chatbot_data_pre['감정_소분류'] == "후회되는") | (chatbot_data_pre['감정_소분류'] == "눈물이 나는"), 'Emotion'] = 2  #우울 => 2
 chatbot_data.loc[(chatbot_data_pre['감정_소분류'] == "걱정스러운") | (chatbot_data_pre['감정_소분류'] == "조심스러운") | (chatbot_data_pre['감정_소분류'] == "초조한") | (chatbot_data_pre['감정_소분류'] == "두려운") | (chatbot_data_pre['감정_소분류'] == "스트레스 받는"), 'Emotion'] = 3  #불안 => 3
 chatbot_data.loc[(chatbot_data_pre['감정_소분류'] == "고립된") | (chatbot_data_pre['감정_소분류'] == "염세적인") | (chatbot_data_pre['감정_소분류'] == "상처")  , 'Emotion'] = 4  #자살 => 4
-#chatbot_data.loc[(chatbot_data['감정_대분류'] == "당황"), 'Emotion'] = 4  #중립 => 4
 chatbot_data.loc[(chatbot_data['감정_대분류'] == "기쁨"), 'Emotion'] = 0  #행복 => 5
 
 # 이중리스트형식으로 data_list에 감정과 텍스트 담기
@@ -320,15 +319,11 @@ def predict(predict_sentence):
             elif np.argmax(logits) == 3:
                 test_eval.append("불안이")
             elif np.argmax(logits) == 4:
-                test_eval.append("의욕이 없는게")
-            elif np.argmax(logits) == 5:
-                test_eval.append("당황이")
-            elif np.argmax(logits) == 6:
-                test_eval.append("혐오가")
+                test_eval.append("자살우려가")
             
         print(">> 입력하신 내용에서 " + test_eval[0] + " 느껴집니다.")
 
 # 문장입력기
-#sentence = input("하고싶은 말을 입력해주세요 : ")
-#predict(sentence)
+sentence = input("하고싶은 말을 입력해주세요 : ")
+predict(sentence)
 print("\n")
