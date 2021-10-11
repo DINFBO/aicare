@@ -38,9 +38,27 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/firebase',
     '@nuxtjs/style-resources',
     'nuxt-breakpoints',
   ],
+
+  firebase: {
+    config: {
+      apiKey: '<apiKey>',
+      authDomain: '<authDomain>',
+      projectId: '<projectId>',
+      storageBucket: '<storageBucket>',
+      messagingSenderId: '<messagingSenderId>',
+      appId: '<appId>',
+      measurementId: '<measurementId>',
+    },
+    services: {
+      auth: true,
+      firestore: true,
+      storage: true,
+    }
+  },
 
   // nuxt-breakpoints options
   breakpoints: {
