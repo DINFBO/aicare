@@ -26,9 +26,13 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.title, this.content)
-      this.title = ''
-      this.content = ''
+      this.$fire.firestore.collection('post').add({
+        title: this.title,
+        content: this.content,
+        created_at: new Date(),
+        author: this.$store.getters.getUid,
+        recommend: 0,
+      })
       this.$router.push('/community')
     },
   },
