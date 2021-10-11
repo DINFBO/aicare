@@ -32,6 +32,10 @@ export default {
     '@nuxtjs/eslint-module',
   ],
 
+  router: {
+    middleware: ['auth'],
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -53,7 +57,14 @@ export default {
       appId: process.env.APP_ID,
     },
     services: {
-      auth: true,
+      auth: {
+        persistence: 'local',
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChangedAction',
+          subscribeManually: false,
+        },
+        ssr: false,
+      },
       firestore: true,
       storage: true,
     },
