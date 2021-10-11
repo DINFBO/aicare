@@ -5,11 +5,22 @@
         <span>회원가입</span>
       </div>
       <div class="sign-up__form">
-        <input type="text" placeholder="이름" required />
-        <input type="text" placeholder="아이디" required />
-        <input type="password" placeholder="비밀번호" required />
-        <input type="password" placeholder="비밀번호 확인" required />
+        <input v-model="auth.name" type="text" placeholder="이름" required />
+        <input v-model="auth.email" type="text" placeholder="이메일" required />
         <input
+          v-model="auth.password"
+          type="password"
+          placeholder="비밀번호"
+          required
+        />
+        <input
+          v-model="auth.passwordCheck"
+          type="password"
+          placeholder="비밀번호 확인"
+          required
+        />
+        <input
+          v-model="auth.dischargeDate"
           type="text"
           placeholder="전역일을 입력해주세요"
           onfocus="(this.type='date')"
@@ -27,7 +38,7 @@
         </label>
         <input id="input-profile" type="file" @change="checkUpload" />
         <div class="button">
-          <button>회원가입</button>
+          <button @click="signUp">회원가입</button>
         </div>
       </div>
     </div>
@@ -46,13 +57,37 @@ export default {
   data() {
     return {
       isSuccess: null,
+      auth: {
+        name: '',
+        email: '',
+        password: '',
+        passwordCheck: '',
+        dischargeDate: '',
+        profileImg: null,
+      },
     }
   },
   methods: {
     checkUpload(event) {
-      if (event.target.file !== null) {
+      if (event.target.files !== null) {
         this.isSuccess = true
+        this.profileImg = event.target.files
       }
+    },
+    async signUp() {
+      await this.$fire.auth
+        .createUserWithEmailAndPassword(this.auth.email, this.auth.password)
+        .then((userCredential) => {
+          const user = userCredential.user
+          this.$fire.firestore.collection('user').doc(user.uid).set({
+            dischart_date: this.auth.dischargeDate,
+            name: this.auth.name,
+          })
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          console.log(e.message)
+        })
     },
   },
 }
