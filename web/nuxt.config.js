@@ -41,23 +41,22 @@ export default {
     '@nuxtjs/firebase',
     '@nuxtjs/style-resources',
     'nuxt-breakpoints',
+    '@nuxtjs/dotenv',
   ],
 
   firebase: {
     config: {
-      apiKey: '<apiKey>',
-      authDomain: '<authDomain>',
-      projectId: '<projectId>',
-      storageBucket: '<storageBucket>',
-      messagingSenderId: '<messagingSenderId>',
-      appId: '<appId>',
-      measurementId: '<measurementId>',
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      projectId: process.env.PROJECT_ID,
+      storageBucket: process.env.STORAGE_BUCKET,
+      appId: process.env.APP_ID,
     },
     services: {
       auth: true,
       firestore: true,
       storage: true,
-    }
+    },
   },
 
   // nuxt-breakpoints options
