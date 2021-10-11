@@ -5,10 +5,10 @@
         <span>로그인</span>
       </div>
       <div class="login__form">
-        <input type="text" />
-        <input type="password" />
+        <input v-model="auth.email" type="text" placeholder="email" />
+        <input v-model="auth.password" type="password" placeholder="password" />
         <div class="button">
-          <button>로그인</button>
+          <button @click="login">로그인</button>
         </div>
       </div>
     </div>
@@ -24,6 +24,27 @@
 <script>
 export default {
   layout: 'auth',
+  data() {
+    return {
+      auth: {
+        email: '',
+        password: '',
+      },
+    }
+  },
+  methods: {
+    login() {
+      this.$fire.auth
+        .signInWithEmailAndPassword(this.auth.email, this.auth.password)
+        .then((userCredential) => {
+          // var user = userCredential.user
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+  },
 }
 </script>
 
