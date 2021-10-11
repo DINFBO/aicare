@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="user">
-      <span class="user__title">안녕하세요 OOO님!</span>
+      <span class="user__title">안녕하세요 {{ user.name }}님!</span>
       <span class="user__subtitle">전역까지 177일 남았습니다.</span>
       <div class="user__img">
         <div></div>
@@ -34,6 +34,24 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ app, store, error }) {
+    const uid = await store.getters.getUid
+    const snapshot = app.$fire.firestore.collection('user').doc(uid).get()
+    const user = await snapshot.then((doc) => {
+      if (doc.exists) {
+        return doc.data()
+      }
+    })
+    return { user }
+  },
+  data() {
+    return {}
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .container {
