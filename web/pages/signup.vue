@@ -80,7 +80,7 @@ export default {
         .then((userCredential) => {
           const user = userCredential.user
           this.$fire.firestore.collection('user').doc(user.uid).set({
-            dischart_date: this.auth.dischargeDate,
+            discharge_date: this.auth.dischargeDate,
             name: this.auth.name,
           })
           this.$router.push('/')
