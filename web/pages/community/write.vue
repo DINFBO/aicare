@@ -30,8 +30,10 @@ export default {
         title: this.title,
         content: this.content,
         created_at: new Date(),
-        author: this.$store.getters.getUid,
+        author_name: this.$store.getters.getUsername,
+        author_id: this.$store.getters.getUid,
         recommend: 0,
+        
       })
       this.$router.push('/community')
     },
