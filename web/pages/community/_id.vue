@@ -105,17 +105,25 @@ export default {
         await this.$fire.firestore
           .collection('post')
           .doc(this.$route.params.id)
-          .update({ recommend: this.postData.recommend++ })
+          .update({ recommend: ++this.postData.recommend })
       } else {
         this.isRecommend = false
         await this.$fire.firestore
           .collection('post')
           .doc(this.$route.params.id)
-          .update({ recommend: this.postData.recommend-- })
+          .update({ recommend: --this.postData.recommend })
       }
     },
-    deletePost() {
-      this.showDeleteModal = false
+    async deletePost() {
+      await this.$fire.firestore
+        .collection('post')
+        .doc(this.$route.params.id)
+        .delete()
+        .then(() => {
+          this.showDeleteModal = false
+          this.$router.push('/community')
+        })
+        .catch((err) => console.log(err))
     },
     handelCommentSubmit() {
       this.isCommentExist = true
