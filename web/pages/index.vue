@@ -2,7 +2,9 @@
   <div class="container">
     <div class="user">
       <span class="user__title">안녕하세요 {{ user.name }}님!</span>
-      <span class="user__subtitle">전역까지 177일 남았습니다.</span>
+      <span class="user__subtitle"
+        >전역까지 {{ dischargeDay }}일 남았습니다.</span
+      >
       <div class="user__img">
         <div></div>
       </div>
@@ -45,10 +47,20 @@ export default {
         return doc.data()
       }
     })
+    store.dispatch('setUserName', user.name)
     return { user }
   },
   data() {
     return {}
+  },
+  computed: {
+    dischargeDay() {
+      const today = new Date()
+      const dischargeDate = new Date(this.user.discharge_date)
+      const gap = dischargeDate.getTime() - today.getTime()
+      const result = Math.ceil(gap / (1000 * 60 * 60 * 24))
+      return result
+    },
   },
 }
 </script>

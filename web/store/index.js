@@ -1,30 +1,40 @@
 const actions = {
   onAuthStateChangedAction(state, { authUser, claims }) {
     if (!authUser) {
-      state.commit('SET_USER', null)
+      state.commit('SET_UID', null)
       this.$router.push({
         path: '/login',
       })
     } else {
       const { uid } = authUser
-      state.commit('SET_USER', uid)
+      state.commit('SET_UID', uid)
     }
+  },
+  setUserName(state, username) {
+    state.commit('SET_USERNAME', username)
   },
 }
 
 const mutations = {
-  SET_USER(state, uid) {
+  SET_UID(state, uid) {
     state.uid = uid
+  },
+  SET_USERNAME(state, username) {
+    state.username = username
   },
 }
 
 const state = () => ({
   uid: null,
+  username: '',
 })
 
 const getters = {
   getUid(state) {
     return state.uid
+  },
+  getUsername(state) {
+    return state.username
   },
 }
 
