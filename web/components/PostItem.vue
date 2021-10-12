@@ -2,24 +2,43 @@
   <div class="post">
     <div>
       <div class="post__title">
-        <span>제목제목제목제목</span>
+        <span>{{ data.title }}</span>
       </div>
       <div class="post__create">
         <div class="post__author">
           <span class="author-img"><i class="far fa-user"></i></span>
-          <span>김OO</span>
+          <span>{{ data.author_name }}</span>
         </div>
-        <div class="post__timestamp">2021-10-05</div>
+        <div class="post__timestamp">{{ timestampToDate }}</div>
       </div>
     </div>
     <button class="post__recommend">
       <span><i class="fas fa-thumbs-up"></i></span>
-      5
+      {{ data.recommend }}
     </button>
   </div>
 </template>
 <script>
-export default {}
+export default {
+  props: {
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+  computed: {
+    timestampToDate() {
+      const timestamp = new Date(this.data.created_at.seconds * 1000)
+      const year = timestamp.getFullYear()
+      const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+      const day = ('0' + timestamp.getDate()).slice(-2)
+
+      return year + '-' + month + '-' + day
+    },
+  },
+}
 </script>
 <style lang="scss" scoped>
 .post {
@@ -43,6 +62,9 @@ export default {}
     display: flex;
     justify-content: space-between;
     font-size: 16px;
+  }
+  &__timestamp {
+    font-size: $description;
   }
   &__author {
     display: flex;
