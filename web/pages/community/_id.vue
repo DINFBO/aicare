@@ -4,7 +4,7 @@
       <div class="author__profile">
         <span class="img"><i class="fab fa-slideshare"></i></span>
         <div>
-          <span>{{ postData.author }}</span>
+          <span>{{ postData.author_name }}</span>
           <span class="timestamp">{{ timestampToDate }}</span>
         </div>
       </div>
@@ -34,14 +34,19 @@
     </div>
     <div class="comments">
       <div class="comments__write">
-        <input type="text" required />
+        <input v-model="commentContent" type="text" required />
         <div class="comments__submit">
-          <button @click="handelCommentSubmit">작성</button>
+          <button @click="handleCommentSubmit">작성</button>
         </div>
       </div>
       <div class="comments__items">
         <template v-if="isCommentExist">
-          <CommentItem v-for="i in 4" :key="i" />
+          <CommentItem
+            v-for="comment in comments"
+            :id="comment.id"
+            :key="comment.id"
+            :data="comment.data"
+          />
         </template>
         <template v-else>
           <div class="no-comments">댓글을 작성해주세요.</div>
@@ -71,14 +76,40 @@ export default {
       .then((doc) => {
         return doc.data()
       })
-    return { postData }
+    const comments = await app.$fire.firestore
+      .collection('post')
+      .doc(postId)
+      .collection('comment')
+      .orderBy('created_at')
+      .get()
+      .then((querySnapshot) => {
+        const result = []
+        querySnapshot.forEach((doc) => {
+          result.push({ id: doc.id, data: doc.data() })
+        })
+        return result
+      })
+    const isCommentExist = await app.$fire.firestore
+      .collection('post')
+      .doc(postId)
+      .collection('comment')
+      .get()
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          return true
+        } else {
+          return false
+        }
+      })
+    return { postData, comments, isCommentExist }
   },
 
   data() {
     return {
-      isCommentExist: false,
       isRecommend: false,
       showDeleteModal: false,
+      postId: this.$route.params.id,
+      commentContent: '',
     }
   },
   computed: {
@@ -117,7 +148,7 @@ export default {
     async deletePost() {
       await this.$fire.firestore
         .collection('post')
-        .doc(this.$route.params.id)
+        .doc(this.postId)
         .delete()
         .then(() => {
           this.showDeleteModal = false
@@ -125,7 +156,19 @@ export default {
         })
         .catch((err) => console.log(err))
     },
-    handelCommentSubmit() {
+    async handleCommentSubmit() {
+      const commentRef = this.$fire.firestore
+        .collection('post')
+        .doc(this.postId)
+        .collection('comment')
+      const payload = {
+        author: this.$store.getters.getUsername,
+        comment_content: this.commentContent,
+        created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+      }
+      await commentRef.add(payload)
+      await this.$nuxt.refresh()
+      this.commentContent = ''
       this.isCommentExist = true
     },
   },
