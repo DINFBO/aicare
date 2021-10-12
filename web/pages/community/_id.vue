@@ -4,8 +4,8 @@
       <div class="author__profile">
         <span class="img"><i class="fab fa-slideshare"></i></span>
         <div>
-          <span>김OO</span>
-          <span class="timestamp">2021-10-05</span>
+          <span>{{ postData.author }}</span>
+          <span class="timestamp">{{ timestampToDate }}</span>
         </div>
       </div>
       <div class="action">
@@ -17,22 +17,18 @@
         <template v-else>
           <button class="recommend" @click="recommendPost">
             <span><i class="fas fa-thumbs-up"></i></span>
-            {{ recommendCount }}
+            {{ postData.recommend }}
           </button>
         </template>
       </div>
     </div>
     <div class="content">
       <div class="content__title">
-        <span>제목입니다.</span>
+        <span>{{ postData.title }}</span>
       </div>
       <div class="content__content">
         <p>
-          동아리에서 알게된 동기가 자꾸 과제 보내달라그러면 어때? 진짜 짜증나게
-          나도 내 시간들여서 하는건데 인스타보면 맨날 술먹고다니느라고 과제할
-          시간이 없나봐;;;; 마감당일에 연락오면 그냥 무시하고 다음날에 못봤다고
-          핑계댈텐데 항상 마감 3-4일전에 연락와서 안읽씹도 못하게 해 과에
-          아는애가 얘밖에 없어서 쌍욕박고 손절할수도없고 짜증난다.
+          {{ postData.content }}
         </p>
       </div>
     </div>
@@ -66,23 +62,56 @@ import DeleteModal from '../../components/DeleteModal.vue'
 
 export default {
   components: { CommentItem, DeleteModal },
+  async asyncData({ app, route }) {
+    const postId = route.params.id
+    const postData = await app.$fire.firestore
+      .collection('post')
+      .doc(postId)
+      .get()
+      .then((doc) => {
+        return doc.data()
+      })
+    return { postData }
+  },
+
   data() {
     return {
       isCommentExist: false,
-      recommendCount: 5,
       isRecommend: false,
-      isWritter: true,
       showDeleteModal: false,
     }
   },
+  computed: {
+    timestampToDate() {
+      const timestamp = new Date(this.postData.created_at.seconds * 1000)
+      const year = timestamp.getFullYear()
+      const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+      const day = ('0' + timestamp.getDate()).slice(-2)
+
+      return year + '-' + month + '-' + day
+    },
+    isWritter() {
+      if (this.postData.author_id === this.$store.getters.getUid) {
+        return true
+      } else {
+        return false
+      }
+    },
+  },
   methods: {
-    recommendPost() {
+    async recommendPost() {
       if (!this.isRecommend) {
         this.isRecommend = true
-        this.recommendCount++
+        await this.$fire.firestore
+          .collection('post')
+          .doc(this.$route.params.id)
+          .update({ recommend: this.postData.recommend++ })
       } else {
         this.isRecommend = false
-        this.recommendCount--
+        await this.$fire.firestore
+          .collection('post')
+          .doc(this.$route.params.id)
+          .update({ recommend: this.postData.recommend-- })
       }
     },
     deletePost() {
