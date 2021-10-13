@@ -80,8 +80,8 @@ export default {
         .then((userCredential) => {
           const user = userCredential.user
           const storageRef = this.$fire.storage.ref()
-          const mountainsRef = storageRef.child(`${user.uid}/profile_${this.auth.profileImg.name}`);
-          mountainsRef.put(this.profileImg)
+          const mountainsRef = storageRef.child(`${user.uid}/profile/${this.auth.profileImg.name}`);
+          mountainsRef.put(this.auth.profileImg)
           this.$fire.firestore.collection('user').doc(user.uid).set({
             discharge_date: this.auth.dischargeDate,
             name: this.auth.name,

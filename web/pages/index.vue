@@ -6,7 +6,7 @@
         >전역까지 {{ dischargeDay }}일 남았습니다.</span
       >
       <div class="user__img">
-        <div></div>
+        <img :src="profileImg" alt="" />
       </div>
     </div>
     <div class="main">
@@ -42,13 +42,21 @@ export default {
   async asyncData({ app, store, error }) {
     const uid = await store.getters.getUid
     const snapshot = app.$fire.firestore.collection('user').doc(uid).get()
+    const pathReference = app.$fire.storage.ref(`${uid}/profile/`)
     const user = await snapshot.then((doc) => {
       if (doc.exists) {
         return doc.data()
       }
     })
+    const profileImg = await pathReference.listAll().then((result) => {
+      const imgUrl = result.items[0].getDownloadURL().then((url) => {
+        return url
+      })
+
+      return imgUrl
+    })
     store.dispatch('setUserName', user.name)
-    return { user }
+    return { user, profileImg }
   },
   data() {
     return {}
@@ -100,7 +108,7 @@ export default {
       justify-content: center;
       margin-top: 48px !important;
 
-      div {
+      img {
         width: 170px;
         height: 170px;
         border-radius: 50%;
