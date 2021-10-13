@@ -2,7 +2,6 @@
   <div class="comment">
     <div class="comment__profile">
       <div class="author">
-        <img src="" alt="" />
         <span>{{ data.author }}</span>
       </div>
       <span class="timestamp"> {{ timestampToDate }} </span>
@@ -92,14 +91,6 @@ export default {
     align-items: flex-end;
     margin-bottom: 12px;
     font-size: $sub-heading;
-
-    .author {
-      img {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-      }
-    }
 
     .timestamp {
       font-size: $description;
