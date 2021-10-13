@@ -71,7 +71,7 @@ export default {
     checkUpload(event) {
       if (event.target.files !== null) {
         this.isSuccess = true
-        this.profileImg = event.target.files
+        this.auth.profileImg = event.target.files[0]
       }
     },
     async signUp() {
@@ -79,6 +79,9 @@ export default {
         .createUserWithEmailAndPassword(this.auth.email, this.auth.password)
         .then((userCredential) => {
           const user = userCredential.user
+          const storageRef = this.$fire.storage.ref()
+          const mountainsRef = storageRef.child(`${user.uid}/profile_${this.auth.profileImg.name}`);
+          mountainsRef.put(this.profileImg)
           this.$fire.firestore.collection('user').doc(user.uid).set({
             discharge_date: this.auth.dischargeDate,
             name: this.auth.name,
@@ -86,7 +89,7 @@ export default {
           this.$router.push('/')
         })
         .catch((e) => {
-          console.log(e.message)
+          console.log(e)
         })
     },
   },
