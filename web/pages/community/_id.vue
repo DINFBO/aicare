@@ -2,7 +2,7 @@
   <div class="container">
     <div class="author">
       <div class="author__profile">
-        <span class="img"><i class="fab fa-slideshare"></i></span>
+        <img :src="authorImg" alt="" />
         <div>
           <span>{{ postData.author_name }}</span>
           <span class="timestamp">{{ timestampToDate }}</span>
@@ -101,7 +101,20 @@ export default {
           return false
         }
       })
-    return { postData, comments, isCommentExist }
+    const pathReference = await app.$fire.storage.ref(
+      `${postData.author_id}/profile/`
+    )
+    const authorImg = await pathReference.listAll().then((result) => {
+      try {
+        const imgUrl = result.items[0].getDownloadURL().then((url) => {
+          return url
+        })
+        return imgUrl
+      } catch {
+        return ''
+      }
+    })
+    return { postData, comments, isCommentExist, authorImg }
   },
 
   data() {
@@ -186,8 +199,10 @@ export default {
     align-items: center;
     margin-bottom: 24px;
 
-    .img {
-      font-size: 40px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
     }
     &__profile {
       display: flex;
