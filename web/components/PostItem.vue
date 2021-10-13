@@ -6,7 +6,6 @@
       </div>
       <div class="post__create">
         <div class="post__author">
-          <span class="author-img"><i class="far fa-user"></i></span>
           <span>{{ data.author_name }}</span>
         </div>
         <div class="post__timestamp">{{ timestampToDate }}</div>
@@ -69,10 +68,6 @@ export default {
   &__author {
     display: flex;
     align-items: center;
-    .author-img {
-      font-size: 14px;
-      margin-right: 6px;
-    }
   }
 
   &__recommend {
