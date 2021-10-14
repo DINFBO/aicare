@@ -1,8 +1,7 @@
 <template>
   <div>
     감정분석 페이지
-    <button @click="play">재생</button>
-    <button @click="pause">정지</button>
+    <audio :src="diaryUrl" controls></audio>
   </div>
 </template>
 <script>
@@ -21,17 +20,17 @@ export default {
       playing: false,
     }
   },
-  methods: {
-    play() {
-      this.playing = true
-      this.audio = new Audio(this.diaryUrl)
-      this.audio.play()
-    },
-    pause() {
-      this.playing = false
-      this.audio.pause()
-    },
-  },
+  // methods: {
+  //   play() {
+  //     this.playing = true
+  //     this.audio = new Audio(this.diaryUrl)
+  //     this.audio.play()
+  //   },
+  //   pause() {
+  //     this.playing = false
+  //     this.audio.pause()
+  //   },
+  // },
 }
 </script>
 <style lang="scss" scoped>
