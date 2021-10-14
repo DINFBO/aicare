@@ -56,9 +56,7 @@ export default {
       this.recorder.onstop = (e) => {
         const blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
         this.chunks = []
-        const audioURL = window.URL.createObjectURL(blob)
-        this.saveUrl(audioURL)
-        this.downloadURL = audioURL
+        this.saveAudio(blob)
       }
     },
     stopRecording() {
@@ -66,17 +64,11 @@ export default {
       this.diaryName = ''
       this.recorder.stop()
     },
-    async saveUrl(url) {
+    async saveAudio(blob) {
       const uid = await this.$store.getters.getUid
       const currentDate = await this.timeToDate
-      const diary = {}
-      diary[currentDate] = url
-      await this.$fire.firestore.collection('user').doc(uid).set(
-        {
-          diary,
-        },
-        { merge: true }
-      )
+      const diaryRef = await this.$fire.storage.ref(`${uid}/diary/${currentDate}`)
+      diaryRef.put(blob)
     },
   },
 }
