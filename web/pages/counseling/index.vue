@@ -12,7 +12,37 @@
             >
           </div>
         </div>
-        <div class="apply-btn">신청하기</div>
+        <div class="apply-btn">
+          <nuxt-link to="/counseling/유상우원장">신청하기</nuxt-link>
+        </div>
+      </li>
+      <li>
+        <div class="counselor">
+          <img src="" alt="" />
+          <div class="counselor__info">
+            <span class="counselor__name">유상우 원장</span>
+            <span class="counselor__category"
+              >공황장애, 사회불안장애, 인지행동치료</span
+            >
+          </div>
+        </div>
+        <div class="apply-btn">
+          <nuxt-link to="/counseling/유상우원장">신청하기</nuxt-link>
+        </div>
+      </li>
+      <li>
+        <div class="counselor">
+          <img src="" alt="" />
+          <div class="counselor__info">
+            <span class="counselor__name">유상우 원장</span>
+            <span class="counselor__category"
+              >공황장애, 사회불안장애, 인지행동치료</span
+            >
+          </div>
+        </div>
+        <div class="apply-btn">
+          <nuxt-link to="/counseling/유상우원장">신청하기</nuxt-link>
+        </div>
       </li>
     </ul>
   </div>
@@ -28,39 +58,53 @@ export default {}
   h1 {
     font-size: $heading;
     font-weight: bold;
+    margin-bottom: 36px;
   }
 
-  .counselor {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
+  ul {
+    li {
+      margin: 24px 0;
+      .counselor {
+        display: flex;
+        align-items: center;
 
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 5px;
-      margin-right: 16px;
-    }
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          margin-right: 16px;
+        }
 
-    &__info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+        &__info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
 
-    &__name {
-      font-weight: bold;
-      margin-bottom: 8px;
+        &__name {
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+        &__category {
+          font-size: $description;
+        }
+      }
+      .apply-btn {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px 0;
+        text-align: center;
+        font-size: $sub-heading;
+        background-color: #c7c7c7;
+        border-radius: 5px;
+      }
+      a {
+        box-sizing: border-box;
+        text-decoration: none;
+        color: $black;
+      }
     }
-    &__category {
-      font-size: $description;
-    }
-  }
-  .apply-btn {
-    width: 100%;
-    padding: 16px 0;
-    text-align: center;
-    font-size: $sub-heading;
   }
 }
 </style>
