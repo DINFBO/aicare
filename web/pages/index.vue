@@ -41,9 +41,9 @@
 export default {
   async asyncData({ app, store, error }) {
     const uid = await store.getters.getUid
-    const snapshot = app.$fire.firestore.collection('user').doc(uid).get()
-    const pathReference = app.$fire.storage.ref(`${uid}/profile/`)
-    const user = await snapshot.then((doc) => {
+    const snapshot = app.$fire.firestore.collection('user').doc(uid)
+    const pathReference = await app.$fire.storage.ref(`${uid}/profile/`)
+    const user = await snapshot.get().then((doc) => {
       if (doc.exists) {
         return doc.data()
       }
