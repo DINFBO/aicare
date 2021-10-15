@@ -31,19 +31,19 @@ AI 기반 정신건강 플랫폼
 - 따라서 상세한 감성정보를 가지고있는 멀티모달 데이터(텍스트와 음성)을 동시에 분석하여 감성을 파악하기로 결정  
 - 상세감성 및 텍스트와 음성을 모두 보유하고 있는 데이터로 한국지능정보사회진흥원에서 제공하는 감성대화말뭉치를 찾았고, 이 데이터를 활용하기로 결정  
 - 해당 데이터를 수집하고, 전체적인 구조와 특성을 파악   
-<img src="/img/m1.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>  
+<img src="/img/m1.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>  
 
 ### - 데이터 가공
 - 음성과 텍스트 각각의 데이터에 맞는 모델 구조를 설계
 - 해당 모델에 맞게 데이터를 적절하게 가공(Preprocessing)
 - 음성은 주파수기반의 스펙트로그램으로 변형하여 벡터화하여 활용
 - 텍스트는 Transformer기반의 ko-Bert모델에서 주어지는 토큰화함수를 이용하여 벡터화하여 활용
-<img src="/img/m2.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>   
+<img src="/img/m2.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>   
 
 ### - 모델 개발
 - LSTM, RNN, TRANSFORMER등의 여러가지 모델을 각각 적용해보고 데이터에 맞는 세부 모델을 탐색
 - 최적의 모델을 찾은뒤 multi-weight 방식의 fusion을 통하여 텍스트모델과 음성모델을 앙상블
-<img src="/img/m3.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/><br/><br/>        
+<img src="/img/m3.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/><br/><br/>        
 
 
 
@@ -52,12 +52,12 @@ AI 기반 정신건강 플랫폼
 
 ### - 감성일기장 / 마음일기  
 - 오늘 하루의 마음/감성을 음성으로 기록합니다.  
-<img src="/img/fc1.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>
+<img src="/img/fc1.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>
 
 ### - 감성분석 / 마음분석  
 - 음성으로 기록된 감성을 AI기반으로 분석합니다.  
 - 시간에 따른 감성의 변화를 시각화하여 보여줍니다.  
-<img src="/img/fc2.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>  
+<img src="/img/fc2.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"><br/>  
 
 ### - 음악추천
 - 분석된 감성에 따라 맞춤형으로 음악을 추천하여 들려줍니다.
