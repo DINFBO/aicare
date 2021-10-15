@@ -282,8 +282,8 @@ $ yarn start or npm run start
 
 
 
-## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EC%A0%80%EC%9E%91%EA%B6%8C-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EA%B6%8C-%EC%A0%95%EB%B3%B4-copyleft--end-user-license)저작권 및 사용권 정보 (Copyleft / End User License)
+## [](https://en.wikipedia.org/wiki/MIT_License)저작권 및 사용권 정보 (Copyleft / End User License)
 
--   [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
+-   [MIT](https://en.wikipedia.org/wiki/MIT_License)
 
 This project is licensed under the terms of the MIT license.
