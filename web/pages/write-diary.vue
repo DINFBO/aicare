@@ -2,11 +2,6 @@
   <div class="container">
     <div class="feedback">일기를 작성해주시면 분석결과가 나타납니다.</div>
     <div class="record">
-      <input
-        v-model="diaryName"
-        type="text"
-        placeholder="일기 제목을 입력해주세요"
-      />
       <button v-if="!isRecording" class="start-btn" @click="startRecording">
         녹음 시작
       </button>
@@ -21,7 +16,6 @@ export default {
     return {
       recorder: null,
       chunks: [],
-      diaryName: '',
       downloadURL: '',
       isRecording: false,
     }
@@ -57,6 +51,7 @@ export default {
         const blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
         this.chunks = []
         this.saveAudio(blob)
+        this.recorder = null
       }
     },
     stopRecording() {
@@ -67,7 +62,9 @@ export default {
     async saveAudio(blob) {
       const uid = await this.$store.getters.getUid
       const currentDate = await this.timeToDate
-      const diaryRef = await this.$fire.storage.ref(`${uid}/diary/${currentDate}`)
+      const diaryRef = await this.$fire.storage.ref(
+        `${uid}/diary/${currentDate}`
+      )
       diaryRef.put(blob)
     },
   },
