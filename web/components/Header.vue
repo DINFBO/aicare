@@ -100,5 +100,9 @@ export default {
     text-decoration: none;
     color: $gray;
   }
+
+  a.nuxt-link-active {
+    color: $black;
+  }
 }
 </style>
