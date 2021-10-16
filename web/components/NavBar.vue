@@ -10,6 +10,9 @@
       <NuxtLink to="/community"><i class="fab fa-slideshare"></i></i></NuxtLink>
     </div>
     <div class="nav__icon">
+      <NuxtLink to="/counseling"><i class="fas fa-hospital-user"></i></NuxtLink>
+    </div>
+    <div class="nav__icon">
       <NuxtLink to="/config"><i class="fas fa-cog"></i></NuxtLink>
     </div>
   </nav>
