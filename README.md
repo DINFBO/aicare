@@ -11,7 +11,8 @@ AI 기반 정신건강 플랫폼
 
 - 기윤호 ()  
 
-- 하철환 ()  
+- 하철환 (육군 1군단 25사단 72여단)  
+국민대학교 소프트웨어융합학과   
 
 - 조성우 ()  
 
@@ -277,7 +278,7 @@ $ yarn start or npm run start
 
 - 성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
 - 기윤호 ([yhkee0404@gmail.com](mailto:yhkee0404@gmail.com)), Github Id: yhkee0404
-- 하철환([](mailto:)), Github Id: hwna00
+- 하철환([layton3534@gmail.com](mailto:layton3534@gmail.com)), Github Id: hwna00
 - 조성우([](mailto:)), Github Id: seouk812
 
 
