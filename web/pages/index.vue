@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div class="user">
-      <span class="user__title">안녕하세요 OOO님!</span>
-      <span class="user__subtitle">전역까지 177일 남았습니다.</span>
+      <span class="user__title">안녕하세요 {{ user.name }}님!</span>
+      <span class="user__subtitle"
+        >전역까지 {{ dischargeDay }}일 남았습니다.</span
+      >
       <div class="user__img">
-        <div></div>
+        <img :src="profileImg" alt="" />
       </div>
     </div>
     <div class="main">
@@ -34,6 +36,42 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ app, store, error }) {
+    const uid = await store.getters.getUid
+    const snapshot = app.$fire.firestore.collection('user').doc(uid)
+    const pathReference = await app.$fire.storage.ref(`${uid}/profile/`)
+    const user = await snapshot.get().then((doc) => {
+      if (doc.exists) {
+        return doc.data()
+      }
+    })
+    const profileImg = await pathReference.listAll().then((result) => {
+      const imgUrl = result.items[0].getDownloadURL().then((url) => {
+        return url
+      })
+
+      return imgUrl
+    })
+    store.dispatch('setUserName', user.name)
+    return { user, profileImg }
+  },
+  data() {
+    return {}
+  },
+  computed: {
+    dischargeDay() {
+      const today = new Date()
+      const dischargeDate = new Date(this.user.discharge_date)
+      const gap = dischargeDate.getTime() - today.getTime()
+      const result = Math.ceil(gap / (1000 * 60 * 60 * 24))
+      return result
+    },
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -70,7 +108,7 @@
       justify-content: center;
       margin-top: 48px !important;
 
-      div {
+      img {
         width: 170px;
         height: 170px;
         border-radius: 50%;

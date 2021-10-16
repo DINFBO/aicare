@@ -32,15 +32,44 @@ export default {
     '@nuxtjs/eslint-module',
   ],
 
+  router: {
+    middleware: ['auth'],
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/firebase',
     '@nuxtjs/style-resources',
     'nuxt-breakpoints',
+    '@nuxtjs/dotenv',
   ],
+
+  firebase: {
+    config: {
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      projectId: process.env.PROJECT_ID,
+      storageBucket: process.env.STORAGE_BUCKET,
+      messagingSenderId: process.env.MESSAGING_SENDER_ID,
+      appId: process.env.APP_ID,
+    },
+    services: {
+      auth: {
+        persistence: 'local',
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChangedAction',
+          subscribeManually: false,
+        },
+        ssr: false,
+      },
+      firestore: true,
+      storage: true,
+    },
+  },
 
   // nuxt-breakpoints options
   breakpoints: {

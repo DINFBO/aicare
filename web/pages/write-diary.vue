@@ -2,11 +2,6 @@
   <div class="container">
     <div class="feedback">일기를 작성해주시면 분석결과가 나타납니다.</div>
     <div class="record">
-      <input
-        v-model="diaryName"
-        type="text"
-        placeholder="일기 제목을 입력해주세요"
-      />
       <button v-if="!isRecording" class="start-btn" @click="startRecording">
         녹음 시작
       </button>
@@ -21,10 +16,19 @@ export default {
     return {
       recorder: null,
       chunks: [],
-      diaryName: '',
       downloadURL: '',
       isRecording: false,
     }
+  },
+  computed: {
+    timeToDate() {
+      const time = new Date()
+      const year = time.getFullYear()
+      const month = ('0' + (1 + time.getMonth())).slice(-2)
+      const day = ('0' + time.getDate()).slice(-2)
+
+      return year + '-' + month + '-' + day
+    },
   },
   methods: {
     startRecording() {
@@ -32,7 +36,7 @@ export default {
       navigator.mediaDevices
         .getUserMedia(contraint)
         .then(this.handleSuccess)
-        .catch(e => {
+        .catch((e) => {
           console.log(e)
         })
     },
@@ -40,26 +44,28 @@ export default {
       this.isRecording = true
       this.recorder = new MediaRecorder(stream)
       this.recorder.start()
-      console.log(this.recorder.state)
       this.recorder.ondataavailable = (e) => {
-        console.log('data available')
         this.chunks.push(e.data)
       }
       this.recorder.onstop = (e) => {
-        console.log('recorder stopped')
-
         const blob = new Blob(this.chunks, { type: 'audio/ogg; codecs=opus' })
         this.chunks = []
-        const audioURL = window.URL.createObjectURL(blob)
-        console.log(audioURL)
-        this.downloadURL = audioURL
+        this.saveAudio(blob)
+        this.recorder = null
       }
     },
     stopRecording() {
       this.isRecording = false
       this.diaryName = ''
       this.recorder.stop()
-      console.log(this.recorder.state)
+    },
+    async saveAudio(blob) {
+      const uid = await this.$store.getters.getUid
+      const currentDate = await this.timeToDate
+      const diaryRef = await this.$fire.storage.ref(
+        `${uid}/diary/${currentDate}`
+      )
+      diaryRef.put(blob)
     },
   },
 }
