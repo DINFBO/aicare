@@ -69,6 +69,7 @@ export default {
   components: { CommentItem, DeleteModal },
   async asyncData({ app, route }) {
     const postId = route.params.id
+
     const postData = await app.$fire.firestore
       .collection('post')
       .doc(postId)
@@ -136,20 +137,29 @@ export default {
   },
   methods: {
     async recommendPost() {
-      const recommenders = this.postData.recommender
-      console.log(recommenders)
-      const uid = this.$store.getters.getUid
+      const recommenders = await this.postData.recommender
+      const uid = await this.$store.getters.getUid
+      const postRef = await this.$fire.firestore
+        .collection('post')
+        .doc(this.$route.params.id)
+
       if (!recommenders.includes(uid)) {
         recommenders.push(uid)
-        await this.$fire.firestore
-          .collection('post')
-          .doc(this.$route.params.id)
-          .update({ recommend: ++this.postData.recommend })
+        await postRef.update({
+          recommender: recommenders,
+          recommend: ++this.postData.recommend,
+        })
       } else {
-        await this.$fire.firestore
-          .collection('post')
-          .doc(this.$route.params.id)
-          .update({ recommend: --this.postData.recommend })
+        for (let i = 0; i < recommenders.length; i++) {
+          if (recommenders[i] === uid) {
+            recommenders.splice(i, 1)
+            break
+          }
+        }
+        await postRef.update({
+          recommender: recommenders,
+          recommend: --this.postData.recommend,
+        })
       }
     },
     async deletePost() {
