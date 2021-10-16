@@ -109,7 +109,6 @@ export default {
 
     return { postData, comments, authorImg }
   },
-
   data() {
     return {
       isRecommend: false,
@@ -121,11 +120,19 @@ export default {
   computed: {
     timestampToDate() {
       const timestamp = new Date(this.postData.created_at.seconds * 1000)
-      const year = timestamp.getFullYear()
-      const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
-      const day = ('0' + timestamp.getDate()).slice(-2)
-
-      return year + '-' + month + '-' + day
+      const now = new Date()
+      const yesterday = new Date(now.setDate(now.getDate() - 1))
+      if (yesterday <= timestamp) {
+        let hour = timestamp.getHours()
+        hour = hour >= 10 ? hour : '0' + hour
+        const min = timestamp.getMinutes()
+        return `${hour}:${min}`
+      } else {
+        const year = timestamp.getFullYear()
+        const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+        const day = ('0' + timestamp.getDate()).slice(-2)
+        return `${year}-${month}-${day}`
+      }
     },
     isWritter() {
       if (this.postData.author_id === this.$store.getters.getUid) {

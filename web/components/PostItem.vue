@@ -30,11 +30,19 @@ export default {
   computed: {
     timestampToDate() {
       const timestamp = new Date(this.data.created_at.seconds * 1000)
-      const year = timestamp.getFullYear()
-      const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
-      const day = ('0' + timestamp.getDate()).slice(-2)
-
-      return year + '-' + month + '-' + day
+      const now = new Date()
+      const yesterday = new Date(now.setDate(now.getDate() - 1))
+      if (yesterday <= timestamp) {
+        let hour = timestamp.getHours()
+        hour = hour >= 10 ? hour : '0' + hour
+        const min = timestamp.getMinutes()
+        return `${hour}:${min}`
+      } else {
+        const year = timestamp.getFullYear()
+        const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+        const day = ('0' + timestamp.getDate()).slice(-2)
+        return `${year}-${month}-${day}`
+      }
     },
   },
 }
