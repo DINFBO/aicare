@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <nav v-if="$breakpoints.sMd" class="nav">
     <div class="nav__icon">
       <NuxtLink to="/" exact><i class="fas fa-home"></i></NuxtLink>
     </div>
