@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="comments__items">
-        <template v-if="isCommentExist">
+        <template v-if="comments.length !== 0">
           <CommentItem
             v-for="comment in comments"
             :id="comment.id"
@@ -84,23 +84,14 @@ export default {
       .get()
       .then((querySnapshot) => {
         const result = []
-        querySnapshot.forEach((doc) => {
-          result.push({ id: doc.id, data: doc.data() })
-        })
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            result.push({ id: doc.id, data: doc.data() })
+          })
+        }
         return result
       })
-    const isCommentExist = await app.$fire.firestore
-      .collection('post')
-      .doc(postId)
-      .collection('comment')
-      .get()
-      .then((querySnapshot) => {
-        if (!querySnapshot.empty) {
-          return true
-        } else {
-          return false
-        }
-      })
+
     const pathReference = await app.$fire.storage.ref(
       `${postData.author_id}/profile/`
     )
@@ -114,7 +105,8 @@ export default {
         return ''
       }
     })
-    return { postData, comments, isCommentExist, authorImg }
+
+    return { postData, comments, authorImg }
   },
 
   data() {
@@ -144,14 +136,16 @@ export default {
   },
   methods: {
     async recommendPost() {
-      if (!this.isRecommend) {
-        this.isRecommend = true
+      const recommenders = this.postData.recommender
+      console.log(recommenders)
+      const uid = this.$store.getters.getUid
+      if (!recommenders.includes(uid)) {
+        recommenders.push(uid)
         await this.$fire.firestore
           .collection('post')
           .doc(this.$route.params.id)
           .update({ recommend: ++this.postData.recommend })
       } else {
-        this.isRecommend = false
         await this.$fire.firestore
           .collection('post')
           .doc(this.$route.params.id)
