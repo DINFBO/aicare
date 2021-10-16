@@ -33,7 +33,7 @@ export default {
         author_name: this.$store.getters.getUsername,
         author_id: this.$store.getters.getUid,
         recommend: 0,
-        
+        recommender: [],
       })
       this.$router.push('/community')
     },

@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="comments__items">
-        <template v-if="isCommentExist">
+        <template v-if="comments.length !== 0">
           <CommentItem
             v-for="comment in comments"
             :id="comment.id"
@@ -69,6 +69,7 @@ export default {
   components: { CommentItem, DeleteModal },
   async asyncData({ app, route }) {
     const postId = route.params.id
+
     const postData = await app.$fire.firestore
       .collection('post')
       .doc(postId)
@@ -84,23 +85,14 @@ export default {
       .get()
       .then((querySnapshot) => {
         const result = []
-        querySnapshot.forEach((doc) => {
-          result.push({ id: doc.id, data: doc.data() })
-        })
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            result.push({ id: doc.id, data: doc.data() })
+          })
+        }
         return result
       })
-    const isCommentExist = await app.$fire.firestore
-      .collection('post')
-      .doc(postId)
-      .collection('comment')
-      .get()
-      .then((querySnapshot) => {
-        if (!querySnapshot.empty) {
-          return true
-        } else {
-          return false
-        }
-      })
+
     const pathReference = await app.$fire.storage.ref(
       `${postData.author_id}/profile/`
     )
@@ -114,9 +106,9 @@ export default {
         return ''
       }
     })
-    return { postData, comments, isCommentExist, authorImg }
-  },
 
+    return { postData, comments, authorImg }
+  },
   data() {
     return {
       isRecommend: false,
@@ -128,11 +120,19 @@ export default {
   computed: {
     timestampToDate() {
       const timestamp = new Date(this.postData.created_at.seconds * 1000)
-      const year = timestamp.getFullYear()
-      const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
-      const day = ('0' + timestamp.getDate()).slice(-2)
-
-      return year + '-' + month + '-' + day
+      const now = new Date()
+      const yesterday = new Date(now.setDate(now.getDate() - 1))
+      if (yesterday <= timestamp) {
+        let hour = timestamp.getHours()
+        hour = hour >= 10 ? hour : '0' + hour
+        const min = timestamp.getMinutes()
+        return `${hour}:${min}`
+      } else {
+        const year = timestamp.getFullYear()
+        const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+        const day = ('0' + timestamp.getDate()).slice(-2)
+        return `${year}-${month}-${day}`
+      }
     },
     isWritter() {
       if (this.postData.author_id === this.$store.getters.getUid) {
@@ -144,18 +144,29 @@ export default {
   },
   methods: {
     async recommendPost() {
-      if (!this.isRecommend) {
-        this.isRecommend = true
-        await this.$fire.firestore
-          .collection('post')
-          .doc(this.$route.params.id)
-          .update({ recommend: ++this.postData.recommend })
+      const recommenders = await this.postData.recommender
+      const uid = await this.$store.getters.getUid
+      const postRef = await this.$fire.firestore
+        .collection('post')
+        .doc(this.$route.params.id)
+
+      if (!recommenders.includes(uid)) {
+        recommenders.push(uid)
+        await postRef.update({
+          recommender: recommenders,
+          recommend: ++this.postData.recommend,
+        })
       } else {
-        this.isRecommend = false
-        await this.$fire.firestore
-          .collection('post')
-          .doc(this.$route.params.id)
-          .update({ recommend: --this.postData.recommend })
+        for (let i = 0; i < recommenders.length; i++) {
+          if (recommenders[i] === uid) {
+            recommenders.splice(i, 1)
+            break
+          }
+        }
+        await postRef.update({
+          recommender: recommenders,
+          recommend: --this.postData.recommend,
+        })
       }
     },
     async deletePost() {

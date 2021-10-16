@@ -22,7 +22,7 @@ export default {
         querySnapshot.forEach((doc) => {
           result.push({ id: doc.id, data: doc.data() })
         })
-        return result
+        return result.slice().reverse()
       })
     return { posts }
   },

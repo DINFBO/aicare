@@ -15,17 +15,11 @@
           <span>인기글</span>
         </div>
         <ul>
-          <li>
-            <span class="hits-posts__title">오늘은 힘든 날이다...</span>
-            <span class="hits-posts__timestamp">09/26 22:58</span>
-          </li>
-          <li>
-            <span class="hits-posts__title">오늘은 힘든 날이다...</span>
-            <span class="hits-posts__timestamp">09/26 22:58</span>
-          </li>
-          <li>
-            <span class="hits-posts__title">오늘은 힘든 날이다...</span>
-            <span class="hits-posts__timestamp">09/26 22:58</span>
+          <li v-for="post in posts" :key="post.id" @click="$router.push(`community/${post.id}`)">
+            <span class="hits-posts__title">{{ post.title }}</span>
+            <span class="hits-posts__timestamp">{{
+              timestampToDate(post.timestamp)
+            }}</span>
           </li>
         </ul>
       </div>
@@ -39,7 +33,7 @@
 
 <script>
 export default {
-  async asyncData({ app, store, error }) {
+  async asyncData({ app, store }) {
     const uid = await store.getters.getUid
     const snapshot = app.$fire.firestore.collection('user').doc(uid)
     const pathReference = await app.$fire.storage.ref(`${uid}/profile/`)
@@ -56,7 +50,25 @@ export default {
       return imgUrl
     })
     store.dispatch('setUserName', user.name)
-    return { user, profileImg }
+
+    const posts = await app.$fire.firestore
+      .collection('post')
+      .orderBy('recommend', 'desc')
+      .limit(3)
+      .get()
+      .then((querySnapshot) => {
+        const result = []
+        querySnapshot.forEach((doc) => {
+          const data = doc.data()
+          result.push({
+            id: doc.id,
+            title: data.title,
+            timestamp: data.created_at,
+          })
+        })
+        return result
+      })
+    return { user, profileImg, posts }
   },
   data() {
     return {}
@@ -68,6 +80,24 @@ export default {
       const gap = dischargeDate.getTime() - today.getTime()
       const result = Math.ceil(gap / (1000 * 60 * 60 * 24))
       return result
+    },
+  },
+  methods: {
+    timestampToDate(createdAt) {
+      const timestamp = new Date(createdAt.seconds * 1000)
+      const now = new Date()
+      const yesterday = new Date(now.setDate(now.getDate() - 1))
+      if (yesterday <= timestamp) {
+        let hour = timestamp.getHours()
+        hour = hour >= 10 ? hour : '0' + hour
+        const min = timestamp.getMinutes()
+        return `${hour}:${min}`
+      } else {
+        const year = timestamp.getFullYear()
+        const month = ('0' + (1 + timestamp.getMonth())).slice(-2)
+        const day = ('0' + timestamp.getDate()).slice(-2)
+        return `${year}-${month}-${day}`
+      }
     },
   },
 }
@@ -106,7 +136,7 @@ export default {
     &__img {
       display: flex;
       justify-content: center;
-      margin-top: 48px !important;
+      margin: 24px 0 !important;
 
       img {
         width: 170px;
