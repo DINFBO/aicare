@@ -51,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 100vh;
-  padding: 50% 16px 47px;
+  padding: 30vh 16px 47px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
