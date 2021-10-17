@@ -4,7 +4,7 @@ pip install sentencepiece
 pip install transformers
 pip install torch
 pip install sklearn
-pip install numpy, matplotlib		
+pip install numpy matplotlib		
 pip install git+https://git@github.com/SKTBrain/KoBERT.git@master
 pip install speechrecognition
 pip install librosa  # sudo apt-get install libsndfile1
