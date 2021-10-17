@@ -1,7 +1,7 @@
 pip install mxnet
 pip install gluonnlp pandas tqdm
 pip install sentencepiece
-pip install transformers
+pip install transformers==3.0.2
 pip install torch
 pip install sklearn
 pip install numpy matplotlib		
