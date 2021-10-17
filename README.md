@@ -56,14 +56,14 @@ AI 기반 정신건강 플랫폼
 
 ### - 감성일기장 / 마음일기  
 - 오늘 하루의 마음/감성을 음성으로 기록합니다.  
-<img src="/img/fc1.PNG" title="감성일기장" alt="감성일기장"><br/>
+<img src="/img/fc1.PNG" title="감성일기장" alt="감성일기장"><br/>  <hr/>
 <img src="/img/fc2.PNG" title="감성분석" alt="감성분석"><br/>    
 
 ### - 감성분석 / 마음분석  
 - 음성으로 기록된 감성을 AI기반으로 분석합니다.  
 - 시간에 따른 감성의 변화를 시각화하여 보여줍니다.  
-<img src="/img/fc3.PNG" title="감성분석" alt="감성분석"><br/>      
-<img src="/img/fc4-1.PNG" title="감성분석" alt="감성분석"><br/>   
+<img src="/img/fc3.PNG" title="감성분석" alt="감성분석"><br/>      <hr/>
+<img src="/img/fc4-1.PNG" title="감성분석" alt="감성분석"><br/>    <hr/>
 <img src="/img/fc4-2.PNG" title="감성분석" alt="감성분석"><br/>   
 ### - 음악추천
 - 분석된 감성에 따라 맞춤형으로 음악을 추천하여 들려줍니다.
