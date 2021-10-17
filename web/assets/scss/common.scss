@@ -18,6 +18,8 @@ $sub-heading: 18px;
 .container {
   box-sizing: border-box !important;
   overflow-y: scroll;
+  max-width: 800px;
+  margin: 0 auto;
   -ms-overflow-style: none;
 
   &::-webkit-scrollbar {
