@@ -1,4 +1,4 @@
-# #필요한 모듈 설치하기
+﻿# #필요한 모듈 설치하기
 # !pip install mxnet
 # !pip install gluonnlp pandas tqdm
 # !pip install sentencepiece
@@ -207,5 +207,5 @@ with open('label_encoder.pkl','rb') as f:
   le = pickle.load(f)
 result = le.inverse_transform([torch.argmax(output)])[0]
 
-return result
+print(result)
 
