@@ -1,9 +1,10 @@
 pip install mxnet
 pip install gluonnlp pandas tqdm
 pip install sentencepiece
-pip install transformers==3.0.2
+pip install transformers
 pip install torch
 pip install sklearn
-pip install numpy
+pip install numpy, matplotlib		
 pip install git+https://git@github.com/SKTBrain/KoBERT.git@master
 pip install speechrecognition
+pip install librosa  # sudo apt-get install libsndfile1
