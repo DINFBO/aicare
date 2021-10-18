@@ -42,6 +42,7 @@ def run(audio_file, device_type='cpu'):
     audio = extract_features(data, sample_rate)
     audio = transform_audio(audio)
 
+    audio_file.seek(0)
     text = make_text(audio_file)
     input_token_ids, valid_length, input_token_type_ids = transform_text(text)
 
