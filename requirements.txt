@@ -1,0 +1,10 @@
+mxnet
+torch
+scikit-learn<0.23
+gluonnlp
+sentencepiece
+transformers==3.0.2
+speechrecognition
+git+https://git@github.com/SKTBrain/KoBERT.git@master
+librosa
+flask
