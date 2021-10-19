@@ -4,6 +4,7 @@ AI 기반 정신건강 플랫폼
 [![logo](https://github.com/osamhack2021/AI_WEB_AICARE_AIM/blob/main/web/facebook_cover_photo_2.png?raw=true)](https://github.com/osamhack2021/AI_WEB_AICARE_AIM)
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
+![asd (1)](https://user-images.githubusercontent.com/86407466/137922558-d06564d5-7221-4eed-9c79-a703ad4f187f.png)
 
 - 성정환 (육군 지작사 1공병여단)  
 고려대학교 산업경영공학과  
