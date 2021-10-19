@@ -1,115 +1,143 @@
 ﻿# #필요한 모듈 설치하기
 # !pip install mxnet
-# !pip install gluonnlp pandas tqdm
+# !pip install torch
+# !pip install 'scikit-learn<0.23'
+# !pip install gluonnlp
 # !pip install sentencepiece
 # !pip install transformers==3.0.2
-# !pip install torch
-# !pip install sklearn
-# !pip install numpy
-# !pip install git+https://git@github.com/SKTBrain/KoBERT.git@master
 # !pip install speechrecognition
+# !pip install git+https://git@github.com/SKTBrain/KoBERT.git@master
+# !pip install librosa
 
 # 기본 라이브러리 불러오기
-import pandas as pd
 import numpy as np
-import os
-import sys
-
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.model_selection import train_test_split
 
 import librosa
-import librosa.display
-
-# 경고메세지 숨기기
-import warnings
-if not sys.warnoptions:
-    warnings.simplefilter("ignore")
-warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 import torch
 from torch import nn
 import torch.nn.functional as F
 import gluonnlp as nlp
-from tqdm import tqdm, tqdm_notebook
 
 #kobert라이브러리에서 많이 쓰이는 함수 불러오기
 from kobert.utils import get_tokenizer
 from kobert.pytorch_kobert import get_pytorch_kobert_model
-#transformers에서 하이퍼파라미터 세팅
-from transformers import AdamW
-from transformers.optimization import get_cosine_schedule_with_warmup
 import pickle
 
 import speech_recognition as sr
 
-#GPU 사용(권장)
-# device = torch.device("cuda:0")
-#CPU 사용
-device = torch.device("cpu")
+r = None
+scaler = None
+bertmodel = None
+sentence_transformer = None
+device_type = None
+device = None
+model = None
+labels = None
 
-if __name__ == '__main__':
-    argument = sys.argv[1]
+def score(audio_file, device_type='cpu'):
+    global device, model, label_encoder, labels
 
-data_path = argument # argmument
+    data, sample_rate = librosa.load(audio_file, duration=2.5, offset=0.6)
+    audio = extract_features(data, sample_rate)
+    audio = transform_audio(audio)
 
-r = sr.Recognizer()
-harvard = sr.AudioFile(data_path)
-with harvard as source:
-  audio = r.record(source)
-text = r.recognize_google(audio, language='ko-KR')
+    audio_file.seek(0)
+    text = make_text(audio_file)
+    input_token_ids, valid_length, input_token_type_ids = transform_text(text)
+
+    if device_type != 'gpu':
+        device_type = 'cpu'
+    if device is None or device_type != globals()['device_type']:
+        globals()['device_type'] = device_type
+        device = torch.device(device_type)
+        model = None
+    if model is None:
+        model = torch.load('multimodal_emotion_classification.pt',map_location=device)
+        model.eval()
+
+        audio = audio.to(device)
+        input_token_ids = input_token_ids.to(device)
+        valid_length = valid_length.to(device)
+        input_token_type_ids = input_token_type_ids.to(device)
+    
+    output = model(audio, input_token_ids, valid_length, input_token_type_ids)
+    
+    if labels is None:
+        with open('label_encoder.pkl','rb') as f:
+            label_encoder = pickle.load(f)
+        labels = label_encoder.classes_.tolist()
+
+    result = list(zip(labels, output.detach()[0].tolist()))
+    result.sort(key=lambda x: x[-1], reverse=True)
+    return result
+
+def make_text(audio_file):
+    global r
+    if r is None:
+        r = sr.Recognizer()
+
+    with sr.AudioFile(audio_file) as source:
+        audio = r.record(source)
+
+    text = r.recognize_google(audio, language='ko-KR')
+    return text
 
 # 음성의 특성추출하는 함수 ( MFCC, MEL, RMSV)
-def extract_features(data):
-
-    result = np.array([])
+def extract_features(audio_data, sample_rate):
+    audio = np.array([])
 
     # MFCC
-    mfcc = np.mean(librosa.feature.mfcc(y=data, sr=sample_rate).T, axis=0)
-    result = np.hstack((result, mfcc)) # stacking horizontally
+    mfcc = np.mean(librosa.feature.mfcc(y=audio_data, sr=sample_rate).T, axis=0)
+    audio = np.hstack((audio, mfcc)) # stacking horizontally
 
     # Root Mean Square Value
 #    rms = np.mean(librosa.feature.rms(y=data).T, axis=0)
 #    result = np.hstack((result, rms)) # stacking horizontally
 
     # MelSpectogram
-    mel = np.mean(librosa.feature.melspectrogram(y=data, sr=sample_rate).T, axis=0)
-    result = np.hstack((result, mel)) # stacking horizontally
-    
-    return result
+    mel = np.mean(librosa.feature.melspectrogram(y=audio_data, sr=sample_rate).T, axis=0)
+    audio = np.hstack((audio, mel)) # stacking horizontally
 
-data, sample_rate = librosa.load(data_path, duration=2.5, offset=0.6)
-x = np.array(extract_features(data)).reshape(1, -1)  # 음성 데이터
-z = text
+    return audio
 
-# # 음성 데이터 스케일 조정
-with open('scaler.pkl','rb') as f:
-  scaler = pickle.load(f)
-x = scaler.transform(x)
-# 음성 데이터의 차원 모델에 맞게 통일 
-x = np.expand_dims(x, axis=2)
+def transform_audio(audio):
+    global scaler
+    if scaler is None:
+        with open('scaler.pkl','rb') as f:
+            scaler = pickle.load(f)
 
-X = torch.tensor(x, dtype=torch.float32)
+    audio = np.array(audio).reshape(1, -1)  # 음성 데이터
+
+    # 음성 데이터 스케일 조정
+    audio = scaler.transform(audio)
+
+    # 음성 데이터의 차원 모델에 맞게 통일 
+    audio = np.expand_dims(audio, axis=2)
+
+    audio = torch.tensor(audio, dtype=torch.float32)
+    return audio
 
 #문장을 토크나이저를 통해서 토큰으로 변환(토큰화)
-with open('kobert_data.pkl', 'rb') as f:
-  bertmodel, vocab, _ = pickle.load(f)
-tokenizer = get_tokenizer()
-tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
-
-transform = nlp.data.BERTSentenceTransform(
+def transform_text(text):
+    global bertmodel, sentence_transformer
+    if sentence_transformer is None:
+        tokenizer = get_tokenizer()
+        with open('kobert_data.pkl', 'rb') as f:
+            bertmodel, vocab, _ = pickle.load(f)
+        # bertmodel, vocab = get_pytorch_kobert_model()
+        tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
+        sentence_transformer = nlp.data.BERTSentenceTransform(
             tok, max_seq_length=50, pad=True, pair=False)
 
-Z = list(transform(z))
-Z1, Z2, Z3 = torch.tensor(Z[0].reshape(1,-1)),torch.tensor(Z[1].reshape(1,-1)),torch.tensor(Z[2].reshape(1,-1))
+    input_token_ids, valid_length, input_token_type_ids = (torch.tensor(z.reshape(1,-1)) for z in sentence_transformer(text))
+    return input_token_ids, valid_length, input_token_type_ids
 
 # 음성 모델 만들기
 class AudioClassifier(nn.Module):
     def __init__(self):
         super(AudioClassifier, self).__init__()
-        self.conv1 = nn.Conv1d(in_channels=x_train.shape[1], out_channels=256, kernel_size=1, stride=1,padding='same')
+        self.conv1 = nn.Conv1d(in_channels=148, out_channels=256, kernel_size=1, stride=1,padding='same')
         self.max_pool1 = nn.MaxPool1d(5, stride=2, padding = 2)
 
         self.conv2 = nn.Conv1d(in_channels=256, out_channels=256, kernel_size=5, stride=1, padding='same')
@@ -197,15 +225,3 @@ class MultimodalClassifier(nn.Module):
         
         x = F.relu(self.fc2(x))
         return x
-
-model = torch.load('multimodal_emotion_classification.pt',map_location=torch.device('cpu'))
-
-output = model(X.to(device), Z1.to(device), Z2.to(device),Z3.to(device))
-output
-
-with open('label_encoder.pkl','rb') as f:
-  le = pickle.load(f)
-result = le.inverse_transform([torch.argmax(output)])[0]
-
-print(result)
-

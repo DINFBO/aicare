@@ -1,0 +1,4 @@
+[submodule "ai/simple-keras-rest-api"]
+	path = ai/simple-keras-rest-api
+	url = https://github.com/yhkee0404/simple-keras-rest-i.git
+	branch = aicare
