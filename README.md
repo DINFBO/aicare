@@ -275,13 +275,13 @@ librosa
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-getting-started)프로젝트 사용법 (Getting Started)
 
-# USAGE  
-# Start the server:  
-# 	python -m ai.simple-keras-rest-api.run_keras_server  
-# Submit a request via cURL:  
-# 	curl -X POST -F wav=@ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
-# Submit a request via Python:  
-#	python -m ai.simple-keras-rest-api.simple_request ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
+USAGE  
+Start the server:  
+	python -m ai.simple-keras-rest-api.run_keras_server  
+Submit a request via cURL:  
+	curl -X POST -F wav=@ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
+Submit a request via Python:  
+	python -m ai.simple-keras-rest-api.simple_request ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
