@@ -286,7 +286,7 @@ $ yarn start or npm run start
 - 성정환 ([mn99134@korea.ac.kr](mailto:mn99134@korea.ac.kr)), Github Id: DINFBO
 - 기윤호 ([yhkee0404@gmail.com](mailto:yhkee0404@gmail.com)), Github Id: yhkee0404
 - 하철환([layton3534@gmail.com](mailto:layton3534@gmail.com)), Github Id: hwna00
-- 조성우([](mailto:)), Github Id: seouk812
+- 조성우([seouk77@gmail.com](mailto:seouk77@gmail.com)), Github Id: seouk812
 
 ## Software Credits
 
