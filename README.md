@@ -79,7 +79,7 @@ AI 기반 정신건강 플랫폼
 <img src="/img/fc9.PNG" title="감성분석" alt="감성분석"><br/>   
 
 ### - 로그인/회원가입
-<img src="/img/fc8.PNG" title="감성분석" alt="감성분석"><br/>  
+<img src="/img/fc10.PNG" title="감성분석" alt="감성분석"><br/>  
 
 
 ### - 마이페이지
