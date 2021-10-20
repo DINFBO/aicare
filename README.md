@@ -294,12 +294,12 @@ The development of this software was made possible using the following component
 
 > ### [KoBERT](https://github.com/SKTBrain/KoBERT) by **SK T-Brain**
 >
-> *Licensed Under: [MIT License](http://www.tldrlegal.com/license/apache-license-2.0-(apache-2.0))*
+> *Licensed Under: [Apache License 2.0 (Apache-2.0)](http://www.tldrlegal.com/license/apache-license-2.0-(apache-2.0))*
 > <br> Korean BERT pre-trained cased (KoBERT)
 
 > ### [A Simple Keras + deep learning REST API](https://https://github.com/jrosebr1/simple-keras-rest-api) by **Adrian Rosebrock**
 >
-> *Licensed Under: [Apache License 2.0 (Apache-2.0)](http://www.tldrlegal.com/license/mit-license)*
+> *Licensed Under: [MIT License](http://www.tldrlegal.com/license/mit-license)*
 > <br> A simple Keras REST API using Flask
 
 *Attribution document generated using [tldrLegal](http://www.tldrlegal.com)*
