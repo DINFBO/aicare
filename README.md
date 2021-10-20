@@ -16,8 +16,8 @@ AI 기반 정신건강 플랫폼
 - 하철환 (육군 1군단 25사단 72여단)  
 국민대학교 소프트웨어융합학과   
 
-- 조성우 ()  
-
+- 조성우 (국직 국군의무사령부 국군구리병원)  
+세종대학교 데이터사이언스학과
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%9E%AD%ED%8A%B8-%EC%86%8C%EA%B0%9C)프로젝트 소개
