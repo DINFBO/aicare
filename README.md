@@ -288,7 +288,22 @@ $ yarn start or npm run start
 - 하철환([layton3534@gmail.com](mailto:layton3534@gmail.com)), Github Id: hwna00
 - 조성우([](mailto:)), Github Id: seouk812
 
+## Software Credits
 
+The development of this software was made possible using the following components:
+
+> ### [KoBERT](https://github.com/SKTBrain/KoBERT) by **SK T-Brain**
+>
+> *Licensed Under: [MIT License](http://www.tldrlegal.com/license/apache-license-2.0-(apache-2.0))*
+> <br> Korean BERT pre-trained cased (KoBERT)
+
+> ### [A Simple Keras + deep learning REST API](https://https://github.com/jrosebr1/simple-keras-rest-api) by **Adrian Rosebrock**
+>
+> *Licensed Under: [Apache License 2.0 (Apache-2.0)](http://www.tldrlegal.com/license/mit-license)*
+> <br> A simple Keras REST API using Flask
+
+*Attribution document generated using [tldrLegal](http://www.tldrlegal.com)*
+<br> *Rewritten in markdown*
 
 ## [](https://en.wikipedia.org/wiki/MIT_License)저작권 및 사용권 정보 (Copyleft / End User License)
 
