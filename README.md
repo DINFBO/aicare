@@ -21,10 +21,11 @@ AI 기반 정신건강 플랫폼
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%9E%AD%ED%8A%B8-%EC%86%8C%EA%B0%9C)프로젝트 소개
+  
 **AICARE**는 군대에서 나라를 지키고 있는 국군 장병 및 간부님들의 정신건강을 AI를 기반으로 관리하는 플랫폼입니다.  
 마음속 이야기가 담긴 음성의 내용과 음향학적 특성을 활용하여 정신건강을 객관적으로 분석합니다.  
 그리고 코로나로 1년넘게 휴가 및 외출이 통제되어 있는 폐쇄적인 상황에서 정신적으로 어려움을 겪고 스트레스를 받는 장병들과 간부님들의 상황에 맞는 개인맞춤형 해결책을 제공합니다.  
-
+![image](https://user-images.githubusercontent.com/86407466/138117915-b7477017-0fd7-460c-b544-24208ab5f6ad.png)  <br>  
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EA%B8%B0%EB%8A%A5-%EC%84%A4%EB%AA%85)모델 설명
 
