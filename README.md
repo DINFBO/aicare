@@ -145,13 +145,6 @@ AI 기반 정신건강 플랫폼
 - 관리자 페이지를 제공하여 보다 체계적인 관리가 가능
 
 
-
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
-
-<p><img src="/image/prerequisites.png"></p>
-
-<br><br>
-
 ## 기술 스택 (Technique Used)
 
 ### AI
