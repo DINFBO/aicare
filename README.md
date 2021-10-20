@@ -261,19 +261,27 @@ AI 기반 정신건강 플랫폼
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%EC%84%A4%EC%B9%98-%EC%95%88%EB%82%B4-installation-process)설치 안내 (Installation Process)
 
-$ git clone git주소
-$ yarn or npm install
-$ yarn start or npm run start
+mxnet  
+torch  
+scikit-learn<0.23  
+gluonnlp  
+sentencepiece  
+transformers==3.0.2  
+speechrecognition  
+git+https://git@github.com/SKTBrain/KoBERT.git@master  
+librosa  
 
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-getting-started)프로젝트 사용법 (Getting Started)
 
-**마크다운 문법을 이용하여 자유롭게 기재**
-
-잘 모를 경우 구글 검색 - 마크다운 문법  [https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017](https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017)
-
-편한 마크다운 에디터를 찾아서 사용 샘플 에디터  [https://stackedit.io/app#](https://stackedit.io/app#)
+# USAGE  
+# Start the server:  
+# 	python -m ai.simple-keras-rest-api.run_keras_server  
+# Submit a request via cURL:  
+# 	curl -X POST -F wav=@ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
+# Submit a request via Python:  
+#	python -m ai.simple-keras-rest-api.simple_request ai/test.wav https://yhkee0404-osamhack2021-ai-web-aicare-aim-xxrpgj9v3q6q-5000.githubpreview.dev/score  
 
 
 ## [](https://github.com/osamhack2021/Repo_Sample-Main-Technology_Sub-Technology_ProjectName_TeamName#%ED%8C%80-%EC%A0%95%EB%B3%B4-team-information)팀 정보 (Team Information)
@@ -284,6 +292,9 @@ $ yarn start or npm run start
 - 조성우([seouk77@gmail.com](mailto:seouk77@gmail.com)), Github Id: seouk812
 
 ## Software Credits
+
+![image](https://user-images.githubusercontent.com/86407466/138116713-12cc2608-65b5-45d0-97ca-b190c43ec827.png)  
+
 
 The development of this software was made possible using the following components:
 
