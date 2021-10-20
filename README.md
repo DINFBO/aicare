@@ -58,7 +58,7 @@ AI 기반 정신건강 플랫폼
 ### - 감성일기장 / 마음일기  
 - 오늘 하루의 마음/감성을 음성으로 기록합니다.  
 <img src="/img/fc1.PNG" title="감성일기장" alt="감성일기장"><br/>  <hr/>
-<img src="/img/fc2.PNG" title="감성분석" alt="감성분석"><br/>    
+<img src="/img/fc1-1.PNG" title="감성분석" alt="감성분석"><br/>    
 
 ### - 감성분석 / 마음분석  
 - 음성으로 기록된 감성을 AI기반으로 분석합니다.  
@@ -69,12 +69,14 @@ AI 기반 정신건강 플랫폼
 ### - 음악추천
 - 분석된 감성에 따라 맞춤형으로 음악을 추천하여 들려줍니다.
 - 추천된 음악을 통해서 불안함과 우울함같은 감성들을 조절합니다.  
-<img src="/img/fc6.PNG" title="감성분석" alt="감성분석"><br/>  
+<img src="/img/fc8.PNG" title="감성분석" alt="감성분석"><br/>  <hr/>
+<img src="/img/fc8-1.PNG" title="감성분석" alt="감성분석"><br/>  
+
 
 ### - 비대면상담
 - 분석된 감성에 알맞는 전문 상담사를 추천하여 보여줍니다.    
 - 감성 분석내용을 바탕으로 세부적인 감정 및 상황에 대해서 심도깊게 상담합니다.  
-<img src="/img/fc5.PNG" title="감성분석" alt="감성분석"><br/>   
+<img src="/img/fc9.PNG" title="감성분석" alt="감성분석"><br/>   
 
 ### - 로그인/회원가입
 <img src="/img/fc8.PNG" title="감성분석" alt="감성분석"><br/>  
@@ -82,7 +84,7 @@ AI 기반 정신건강 플랫폼
 
 ### - 마이페이지
 - 상담내역 및 감성기록들을 확인하고 체계적으로 관리합니다.  
-<img src="/img/fc7.PNG" title="감성분석" alt="감성분석"><br/>
+<img src="/img/fc9-1.PNG" title="감성분석" alt="감성분석"><br/>
 
 
 
